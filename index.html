@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day Sheet - Daily Planner</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Day Sheet</h1>
+            <p id="current-date"></p>
+        </header>
+        
+        <main>
+            <section class="priorities">
+                <h2>Today's Priorities</h2>
+                <div class="priority-list">
+                    <div class="priority-item">
+                        <input type="text" placeholder="Priority 1" class="priority-input">
+                        <button class="remove-btn">×</button>
+                    </div>
+                    <div class="priority-item">
+                        <input type="text" placeholder="Priority 2" class="priority-input">
+                        <button class="remove-btn">×</button>
+                    </div>
+                    <div class="priority-item">
+                        <input type="text" placeholder="Priority 3" class="priority-input">
+                        <button class="remove-btn">×</button>
+                    </div>
+                </div>
+                <button id="add-priority" class="add-btn">+ Add Priority</button>
+            </section>
+
+            <section class="schedule">
+                <h2>Daily Schedule</h2>
+                <div class="time-slots">
+                    <div class="time-slot">
+                        <span class="time">6:00 AM</span>
+                        <input type="text" placeholder="Morning routine" class="schedule-input">
+                    </div>
+                    <div class="time-slot">
+                        <span class="time">8:00 AM</span>
+                        <input type="text" placeholder="Start work" class="schedule-input">
+                    </div>
+                    <div class="time-slot">
+                        <span class="time">12:00 PM</span>
+                        <input type="text" placeholder="Lunch break" class="schedule-input">
+                    </div>
+                    <div class="time-slot">
+                        <span class="time">6:00 PM</span>
+                        <input type="text" placeholder="End work" class="schedule-input">
+                    </div>
+                    <div class="time-slot">
+                        <span class="time">8:00 PM</span>
+                        <input type="text" placeholder="Evening activities" class="schedule-input">
+                    </div>
+                </div>
+                <button id="add-time-slot" class="add-btn">+ Add Time Slot</button>
+            </section>
+
+            <section class="notes">
+                <h2>Notes & Reflections</h2>
+                <textarea id="daily-notes" placeholder="Write your thoughts, ideas, or reflections for the day..."></textarea>
+            </section>
+        </main>
+
+        <footer>
+            <button id="save-sheet" class="save-btn">Save Day Sheet</button>
+            <button id="clear-sheet" class="clear-btn">Clear All</button>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
