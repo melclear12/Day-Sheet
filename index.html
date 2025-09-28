@@ -3,72 +3,863 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Day Sheet - Daily Planner</title>
+    <title>Day Sheet - Practice Management</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Day Sheet</h1>
-            <p id="current-date"></p>
+            <div class="header-content">
+                <h1>Day Sheet</h1>
+                <div class="date-info">
+                    <p id="current-date"></p>
+                    <p id="practice-name">Medical Practice</p>
+                </div>
+            </div>
         </header>
         
         <main>
-            <section class="priorities">
-                <h2>Today's Priorities</h2>
-                <div class="priority-list">
-                    <div class="priority-item">
-                        <input type="text" placeholder="Priority 1" class="priority-input">
-                        <button class="remove-btn">×</button>
-                    </div>
-                    <div class="priority-item">
-                        <input type="text" placeholder="Priority 2" class="priority-input">
-                        <button class="remove-btn">×</button>
-                    </div>
-                    <div class="priority-item">
-                        <input type="text" placeholder="Priority 3" class="priority-input">
-                        <button class="remove-btn">×</button>
-                    </div>
-                </div>
-                <button id="add-priority" class="add-btn">+ Add Priority</button>
-            </section>
-
-            <section class="schedule">
-                <h2>Daily Schedule</h2>
-                <div class="time-slots">
-                    <div class="time-slot">
-                        <span class="time">6:00 AM</span>
-                        <input type="text" placeholder="Morning routine" class="schedule-input">
-                    </div>
-                    <div class="time-slot">
-                        <span class="time">8:00 AM</span>
-                        <input type="text" placeholder="Start work" class="schedule-input">
-                    </div>
-                    <div class="time-slot">
-                        <span class="time">12:00 PM</span>
-                        <input type="text" placeholder="Lunch break" class="schedule-input">
-                    </div>
-                    <div class="time-slot">
-                        <span class="time">6:00 PM</span>
-                        <input type="text" placeholder="End work" class="schedule-input">
-                    </div>
-                    <div class="time-slot">
-                        <span class="time">8:00 PM</span>
-                        <input type="text" placeholder="Evening activities" class="schedule-input">
+            <!-- Daily Goal Section -->
+            <section class="daily-goal">
+                <h2>Daily Goals</h2>
+                
+                <!-- Practice-Wide Goals -->
+                <div class="practice-goals">
+                    <h3>🏥 Practice Goals</h3>
+                    <div class="goal-container">
+                        <div class="goal-item">
+                            <label>Revenue Goal</label>
+                            <input type="number" id="revenue-goal" placeholder="5000" value="5000">
+                            <span class="currency">$</span>
+                        </div>
+                        <div class="goal-item">
+                            <label>Patient Goal</label>
+                            <input type="number" id="patient-goal" placeholder="25" value="25">
+                            <span class="unit">patients</span>
+                        </div>
                     </div>
                 </div>
-                <button id="add-time-slot" class="add-btn">+ Add Time Slot</button>
+
+                <!-- Individual Team Member Goals -->
+                <div class="individual-goals">
+                    <h3>👥 Individual Daily Goals</h3>
+                    
+                    <div class="team-member-goals">
+                        <div class="member-goal-card">
+                            <div class="member-header">
+                                <div class="member-avatar">DS</div>
+                                <div class="member-info">
+                                    <div class="member-name">Dr. Smith</div>
+                                    <div class="member-role">Lead Dentist</div>
+                                </div>
+                                <div class="goal-status on-track">On Track</div>
+                            </div>
+                            
+                            <div class="daily-targets">
+                                <div class="target-item">
+                                    <span class="target-label">Procedures Completed</span>
+                                    <div class="target-progress">
+                                        <span class="current">8</span>
+                                        <span class="divider">/</span>
+                                        <span class="target">12</span>
+                                        <div class="progress-mini">
+                                            <div class="progress-fill-mini" style="width: 67%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="target-item">
+                                    <span class="target-label">Treatment Plans Created</span>
+                                    <div class="target-progress">
+                                        <span class="current">3</span>
+                                        <span class="divider">/</span>
+                                        <span class="target">5</span>
+                                        <div class="progress-mini">
+                                            <div class="progress-fill-mini" style="width: 60%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="target-item">
+                                    <span class="target-label">Revenue Generated</span>
+                                    <div class="target-progress">
+                                        <span class="current">$2,850</span>
+                                        <span class="divider">/</span>
+                                        <span class="target">$3,500</span>
+                                        <div class="progress-mini">
+                                            <div class="progress-fill-mini" style="width: 81%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="member-goal-card">
+                            <div class="member-header">
+                                <div class="member-avatar">LC</div>
+                                <div class="member-info">
+                                    <div class="member-name">Lisa Chen</div>
+                                    <div class="member-role">Practice Admin</div>
+                                </div>
+                                <div class="goal-status ahead">Ahead</div>
+                            </div>
+                            
+                            <div class="daily-targets">
+                                <div class="target-item">
+                                    <span class="target-label">Insurance Claims Processed</span>
+                                    <div class="target-progress">
+                                        <span class="current">18</span>
+                                        <span class="divider">/</span>
+                                        <span class="target">15</span>
+                                        <div class="progress-mini">
+                                            <div class="progress-fill-mini" style="width: 100%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="target-item">
+                                    <span class="target-label">Patient Check-ins</span>
+                                    <div class="target-progress">
+                                        <span class="current">12</span>
+                                        <span class="divider">/</span>
+                                        <span class="target">20</span>
+                                        <div class="progress-mini">
+                                            <div class="progress-fill-mini" style="width: 60%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="target-item">
+                                    <span class="target-label">Appointment Confirmations</span>
+                                    <div class="target-progress">
+                                        <span class="current">25</span>
+                                        <span class="divider">/</span>
+                                        <span class="target">30</span>
+                                        <div class="progress-mini">
+                                            <div class="progress-fill-mini" style="width: 83%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="member-goal-card">
+                            <div class="member-header">
+                                <div class="member-avatar">ML</div>
+                                <div class="member-info">
+                                    <div class="member-name">Maria Lopez</div>
+                                    <div class="member-role">Dental Hygienist</div>
+                                </div>
+                                <div class="goal-status excellent">Excellent</div>
+                            </div>
+                            
+                            <div class="daily-targets">
+                                <div class="target-item">
+                                    <span class="target-label">Cleanings Completed</span>
+                                    <div class="target-progress">
+                                        <span class="current">8</span>
+                                        <span class="divider">/</span>
+                                        <span class="target">8</span>
+                                        <div class="progress-mini">
+                                            <div class="progress-fill-mini" style="width: 100%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="target-item">
+                                    <span class="target-label">X-rays Taken</span>
+                                    <div class="target-progress">
+                                        <span class="current">15</span>
+                                        <span class="divider">/</span>
+                                        <span class="target">12</span>
+                                        <div class="progress-mini">
+                                            <div class="progress-fill-mini" style="width: 100%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="target-item">
+                                    <span class="target-label">Patient Education Sessions</span>
+                                    <div class="target-progress">
+                                        <span class="current">6</span>
+                                        <span class="divider">/</span>
+                                        <span class="target">6</span>
+                                        <div class="progress-mini">
+                                            <div class="progress-fill-mini" style="width: 100%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="member-goal-card">
+                            <div class="member-header">
+                                <div class="member-avatar">JW</div>
+                                <div class="member-info">
+                                    <div class="member-name">Jessica Wong</div>
+                                    <div class="member-role">Dental Assistant</div>
+                                </div>
+                                <div class="goal-status on-track">On Track</div>
+                            </div>
+                            
+                            <div class="daily-targets">
+                                <div class="target-item">
+                                    <span class="target-label">Procedures Assisted</span>
+                                    <div class="target-progress">
+                                        <span class="current">10</span>
+                                        <span class="divider">/</span>
+                                        <span class="target">15</span>
+                                        <div class="progress-mini">
+                                            <div class="progress-fill-mini" style="width: 67%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="target-item">
+                                    <span class="target-label">Sterilization Cycles</span>
+                                    <div class="target-progress">
+                                        <span class="current">4</span>
+                                        <span class="divider">/</span>
+                                        <span class="target">6</span>
+                                        <div class="progress-mini">
+                                            <div class="progress-fill-mini" style="width: 67%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="target-item">
+                                    <span class="target-label">Room Turnovers</span>
+                                    <div class="target-progress">
+                                        <span class="current">12</span>
+                                        <span class="divider">/</span>
+                                        <span class="target">15</span>
+                                        <div class="progress-mini">
+                                            <div class="progress-fill-mini" style="width: 80%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
 
-            <section class="notes">
-                <h2>Notes & Reflections</h2>
-                <textarea id="daily-notes" placeholder="Write your thoughts, ideas, or reflections for the day..."></textarea>
+            <!-- Current Schedule Overview -->
+            <section class="schedule-overview">
+                <h2>What's on the schedule already?</h2>
+                <div class="schedule-stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="scheduled-patients">12</div>
+                        <div class="stat-label">Scheduled Patients</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="estimated-revenue">$4,150</div>
+                        <div class="stat-label">Estimated Revenue</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="open-slots">5</div>
+                        <div class="stat-label">Open Slots</div>
+                    </div>
+                </div>
+                
+                <div class="patient-schedule">
+                    <div class="time-slot has-patients">
+                        <div class="time-header">
+                            <span class="time-label">8:00 AM - 9:00 AM</span>
+                            <span class="slot-status booked">1 Patient</span>
+                        </div>
+                        <div class="patients-list">
+                            <div class="patient-card">
+                                <div class="patient-header">
+                                    <div>
+                                        <div class="patient-name">Sarah Martinez</div>
+                                        <div class="appointment-type">Consultation & Cleaning</div>
+                                    </div>
+                                    <div class="balance-info">
+                                        <div class="balance-amount">$185.00</div>
+                                        <div class="insurance-status">Insurance pending</div>
+                                    </div>
+                                </div>
+                                <div class="patient-details">
+                                    <div class="detail-section">
+                                        <h4>Account Status</h4>
+                                        <div>Outstanding: $185.00</div>
+                                        <div>Insurance claim: $320.00 pending</div>
+                                    </div>
+                                    <div class="detail-section">
+                                        <div class="treatment-info">
+                                            <div class="next-treatment">Next: Crown prep #14</div>
+                                            <div class="treatment-notes">Est. 90 min, $850</div>
+                                            <div class="scheduling-options">
+                                                <button class="can-do-today">Can do today?</button>
+                                                <div class="schedule-dropdown">
+                                                    <button class="schedule-btn">Smart Schedule ▼</button>
+                                                    <div class="recommended-times">
+                                                        <div class="time-option"><span class="date">Tomorrow</span><span class="slot">10:30 AM</span></div>
+                                                        <div class="time-option"><span class="date">Oct 1</span><span class="slot">2:00 PM</span></div>
+                                                        <div class="time-option"><span class="date">Oct 3</span><span class="slot">9:15 AM</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="time-slot has-patients">
+                        <div class="time-header">
+                            <span class="time-label">9:00 AM - 10:30 AM</span>
+                            <span class="slot-status booked">2 Patients</span>
+                        </div>
+                        <div class="patients-list">
+                            <div class="patient-card">
+                                <div class="patient-header">
+                                    <div>
+                                        <div class="patient-name">John Davis</div>
+                                        <div class="appointment-type">Follow-up Exam</div>
+                                    </div>
+                                    <div class="balance-info">
+                                        <div class="balance-amount paid">$0.00</div>
+                                        <div class="insurance-status">Paid in full</div>
+                                    </div>
+                                </div>
+                                <div class="patient-details">
+                                    <div class="detail-section">
+                                        <h4>Account Status</h4>
+                                        <div>Current balance: $0.00</div>
+                                        <div>Last payment: Sep 15</div>
+                                    </div>
+                                    <div class="detail-section">
+                                        <div class="treatment-info">
+                                            <div class="next-treatment">Next: Root canal #19</div>
+                                            <div class="treatment-notes">Est. 120 min, $1,200</div>
+                                            <div class="scheduling-options">
+                                                <div class="schedule-dropdown">
+                                                    <button class="schedule-btn">Smart Schedule ▼</button>
+                                                    <div class="recommended-times">
+                                                        <div class="time-option"><span class="date">Oct 2</span><span class="slot">1:00 PM</span></div>
+                                                        <div class="time-option"><span class="date">Oct 4</span><span class="slot">8:00 AM</span></div>
+                                                        <div class="time-option"><span class="date">Oct 7</span><span class="slot">3:30 PM</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="patient-card">
+                                <div class="patient-header">
+                                    <div>
+                                        <div class="patient-name">Emma Wilson</div>
+                                        <div class="appointment-type">Orthodontic Adjustment</div>
+                                    </div>
+                                    <div class="balance-info">
+                                        <div class="balance-amount">$275.00</div>
+                                        <div class="insurance-status">Payment plan</div>
+                                    </div>
+                                </div>
+                                <div class="patient-details">
+                                    <div class="detail-section">
+                                        <h4>Account Status</h4>
+                                        <div>Outstanding: $275.00</div>
+                                        <div>Payment plan: $50/month</div>
+                                    </div>
+                                    <div class="detail-section">
+                                        <div class="treatment-info">
+                                            <div class="next-treatment">Next: Adjustment visit</div>
+                                            <div class="treatment-notes">Est. 30 min, $150</div>
+                                            <div class="scheduling-options">
+                                                <button class="can-do-today">Can do today?</button>
+                                                <div class="schedule-dropdown">
+                                                    <button class="schedule-btn">Smart Schedule ▼</button>
+                                                    <div class="recommended-times">
+                                                        <div class="time-option"><span class="date">Next week</span><span class="slot">4:00 PM</span></div>
+                                                        <div class="time-option"><span class="date">Oct 10</span><span class="slot">3:15 PM</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="time-slot">
+                        <div class="time-header">
+                            <span class="time-label">10:30 AM - 12:00 PM</span>
+                            <span class="slot-status available">Available</span>
+                        </div>
+                        <div class="add-patient-btn">
+                            <span>+ Add Patient from Waiting List</span>
+                        </div>
+                    </div>
+
+                    <div class="time-slot has-patients">
+                        <div class="time-header">
+                            <span class="time-label">2:00 PM - 4:00 PM</span>
+                            <span class="slot-status booked">3 Patients</span>
+                        </div>
+                        <div class="patients-list">
+                            <div class="patient-card">
+                                <div class="patient-header">
+                                    <div>
+                                        <div class="patient-name">Michael Chen</div>
+                                        <div class="appointment-type">Crown Prep</div>
+                                    </div>
+                                    <div class="balance-info">
+                                        <div class="balance-amount">$450.00</div>
+                                        <div class="insurance-status">Pre-auth approved</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bonus Tracker -->
+            <section class="bonus-tracker">
+                <h2>How much do we need to make over our goal to hit bonus?</h2>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="goal-progress"></div>
+                        <div class="bonus-threshold">Bonus at 120%</div>
+                    </div>
+                    <div class="progress-stats">
+                        <div class="progress-stat">
+                            <span class="label">Current Progress</span>
+                            <span class="value" id="current-percentage">72%</span>
+                        </div>
+                        <div class="progress-stat">
+                            <span class="label">Need for Bonus</span>
+                            <span class="value" id="bonus-needed">$2,400</span>
+                        </div>
+                        <div class="progress-stat">
+                            <span class="label">Patients Needed</span>
+                            <span class="value" id="patients-needed">7</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Accounting Section -->
+            <section class="accounting-section">
+                <h2>📊 Accounting & KPIs</h2>
+                
+                <div class="accounting-overview">
+                    <div class="metric-card revenue">
+                        <h3>Revenue Metrics</h3>
+                        <div class="metric-grid">
+                            <div class="metric-item">
+                                <div class="metric-label">MTD</div>
+                                <div class="metric-value">$89,450</div>
+                                <div class="metric-change positive">+12.3%</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">QTD</div>
+                                <div class="metric-value">$267,800</div>
+                                <div class="metric-change positive">+8.7%</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">YTD</div>
+                                <div class="metric-value">$821,340</div>
+                                <div class="metric-change positive">+15.2%</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">YOY</div>
+                                <div class="metric-value">+18.4%</div>
+                                <div class="metric-change positive">↗ Growth</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card patients">
+                        <h3>Patient Volume</h3>
+                        <div class="metric-grid">
+                            <div class="metric-item">
+                                <div class="metric-label">MTD</div>
+                                <div class="metric-value">412</div>
+                                <div class="metric-change positive">+6.2%</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">QTD</div>
+                                <div class="metric-value">1,289</div>
+                                <div class="metric-change positive">+4.8%</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">YTD</div>
+                                <div class="metric-value">3,847</div>
+                                <div class="metric-change positive">+9.1%</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-label">YOY</div>
+                                <div class="metric-value">+11.7%</div>
+                                <div class="metric-change positive">↗ Growth</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-section">
+                    <h3>Key Performance Indicators</h3>
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <div class="kpi-title">Collections Rate</div>
+                            <div class="kpi-value">94.2%</div>
+                            <div class="kpi-target">Target: 95%</div>
+                            <div class="kpi-progress">
+                                <div class="progress-bar-small">
+                                    <div class="progress-fill-small" style="width: 94.2%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="kpi-card">
+                            <div class="kpi-title">Average Revenue per Patient</div>
+                            <div class="kpi-value">$217</div>
+                            <div class="kpi-target">Target: $200</div>
+                            <div class="kpi-indicator positive">↗ +8.5%</div>
+                        </div>
+                        
+                        <div class="kpi-card">
+                            <div class="kpi-title">No-Show Rate</div>
+                            <div class="kpi-value">8.3%</div>
+                            <div class="kpi-target">Target: <10%</div>
+                            <div class="kpi-indicator positive">↘ -2.1%</div>
+                        </div>
+                        
+                        <div class="kpi-card">
+                            <div class="kpi-title">Outstanding AR</div>
+                            <div class="kpi-value">$23,400</div>
+                            <div class="kpi-target">30-day avg</div>
+                            <div class="kpi-indicator neutral">→ Stable</div>
+                        </div>
+                        
+                        <div class="kpi-card">
+                            <div class="kpi-title">Insurance Claims Pending</div>
+                            <div class="kpi-value">47</div>
+                            <div class="kpi-target">Avg: $685 each</div>
+                            <div class="kpi-indicator negative">↗ +5 this week</div>
+                        </div>
+                        
+                        <div class="kpi-card">
+                            <div class="kpi-title">Case Acceptance Rate</div>
+                            <div class="kpi-value">78%</div>
+                            <div class="kpi-target">Target: 75%</div>
+                            <div class="kpi-indicator positive">↗ +3%</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Insights -->
+            <section class="ai-insights">
+                <h2>🤖 AI Insights - Schedule Optimization</h2>
+                <div class="insights-container">
+                    <div class="insight-card priority-high">
+                        <div class="insight-icon">🎯</div>
+                        <div class="insight-content">
+                            <h3>Fill Morning Gaps</h3>
+                            <p>You have 2 open slots between 10:30 AM-12 PM. Sarah Martinez needs crown prep - could be done today with 90 min slot.</p>
+                            <div class="insight-action">
+                                <button class="action-btn">Schedule Crown Prep</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="insight-card priority-medium">
+                        <div class="insight-icon">💰</div>
+                        <div class="insight-content">
+                            <h3>Outstanding Collections</h3>
+                            <p>$460 in outstanding balances from today's patients. Follow up on Sarah Martinez ($185) and Emma Wilson ($275).</p>
+                            <div class="insight-action">
+                                <button class="action-btn">Process Payments</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="insight-card priority-low">
+                        <div class="insight-icon">📋</div>
+                        <div class="insight-content">
+                            <h3>Insurance Claims Alert</h3>
+                            <p>47 pending claims worth $32,195. Submit 12 claims ready for processing to improve cash flow.</p>
+                            <div class="insight-action">
+                                <button class="action-btn">Submit Claims</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Audit Trail Section -->
+            <section class="audit-section">
+                <h2>🔍 Audit Trail</h2>
+                <div class="audit-container">
+                    <div class="audit-filters">
+                        <select class="filter-select">
+                            <option>Today's Changes</option>
+                            <option>This Week</option>
+                            <option>This Month</option>
+                        </select>
+                        <select class="filter-select">
+                            <option>All Staff</option>
+                            <option>Dr. Smith</option>
+                            <option>Lisa (Admin)</option>
+                            <option>Maria (Hygienist)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="audit-log">
+                        <div class="audit-entry">
+                            <div class="audit-timestamp">2:45 PM</div>
+                            <div class="audit-user">Lisa Chen (Admin)</div>
+                            <div class="audit-action">Scheduled Sarah Martinez for crown prep</div>
+                            <div class="audit-details">Changed from consultation to crown prep + consultation, Revenue impact: +$665</div>
+                        </div>
+                        
+                        <div class="audit-entry">
+                            <div class="audit-timestamp">1:30 PM</div>
+                            <div class="audit-user">Dr. Smith</div>
+                            <div class="audit-action">Updated treatment plan for John Davis</div>
+                            <div class="audit-details">Added root canal to treatment plan, Updated fee: $1,200</div>
+                        </div>
+                        
+                        <div class="audit-entry">
+                            <div class="audit-timestamp">11:15 AM</div>
+                            <div class="audit-user">Maria Lopez (Hygienist)</div>
+                            <div class="audit-action">Processed payment for Emma Wilson</div>
+                            <div class="audit-details">Payment plan payment received: $50.00, Balance reduced to $275.00</div>
+                        </div>
+                        
+                        <div class="audit-entry">
+                            <div class="audit-timestamp">9:00 AM</div>
+                            <div class="audit-user">System</div>
+                            <div class="audit-action">Daily goal updated</div>
+                            <div class="audit-details">Revenue goal increased from $4,800 to $5,000, Patient goal: 25</div>
+                        </div>
+                        
+                        <div class="audit-entry">
+                            <div class="audit-timestamp">8:45 AM</div>
+                            <div class="audit-user">Lisa Chen (Admin)</div>
+                            <div class="audit-action">Insurance claim submitted</div>
+                            <div class="audit-details">Claim #INS-2025-0328-15 submitted for Michael Chen, Amount: $850.00</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Clinical Team Gamification -->
+            <section class="gamification-section">
+                <h2>🏆 Clinical Team Performance Dashboard</h2>
+                
+                <div class="performance-overview">
+                    <div class="leaderboard-container">
+                        <div class="leaderboard">
+                            <h3>⏰ Time Efficiency Leaders</h3>
+                            <div class="leaderboard-list">
+                                <div class="leader-item rank-1">
+                                    <div class="rank">1</div>
+                                    <div class="avatar">LC</div>
+                                    <div class="leader-info">
+                                        <div class="name">Lisa Chen</div>
+                                        <div class="role">Admin</div>
+                                    </div>
+                                    <div class="score">47.5 hrs</div>
+                                    <div class="badge gold">🥇</div>
+                                </div>
+                                
+                                <div class="leader-item rank-2">
+                                    <div class="rank">2</div>
+                                    <div class="avatar">ML</div>
+                                    <div class="leader-info">
+                                        <div class="name">Maria Lopez</div>
+                                        <div class="role">Hygienist</div>
+                                    </div>
+                                    <div class="score">44.2 hrs</div>
+                                    <div class="badge silver">🥈</div>
+                                </div>
+                                
+                                <div class="leader-item rank-3">
+                                    <div class="rank">3</div>
+                                    <div class="avatar">DS</div>
+                                    <div class="leader-info">
+                                        <div class="name">Dr. Smith</div>
+                                        <div class="role">Dentist</div>
+                                    </div>
+                                    <div class="score">42.8 hrs</div>
+                                    <div class="badge bronze">🥉</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="leaderboard">
+                            <h3>💻 PMS Efficiency Score</h3>
+                            <div class="leaderboard-list">
+                                <div class="leader-item rank-1">
+                                    <div class="rank">1</div>
+                                    <div class="avatar">ML</div>
+                                    <div class="leader-info">
+                                        <div class="name">Maria Lopez</div>
+                                        <div class="role">Hygienist</div>
+                                    </div>
+                                    <div class="score">95.2%</div>
+                                    <div class="badge gold">🏆</div>
+                                </div>
+                                
+                                <div class="leader-item rank-2">
+                                    <div class="rank">2</div>
+                                    <div class="avatar">LC</div>
+                                    <div class="leader-info">
+                                        <div class="name">Lisa Chen</div>
+                                        <div class="role">Admin</div>
+                                    </div>
+                                    <div class="score">89.7%</div>
+                                    <div class="badge silver">⭐</div>
+                                </div>
+                                
+                                <div class="leader-item rank-3">
+                                    <div class="rank">3</div>
+                                    <div class="avatar">DS</div>
+                                    <div class="leader-info">
+                                        <div class="name">Dr. Smith</div>
+                                        <div class="role">Dentist</div>
+                                    </div>
+                                    <div class="score">87.4%</div>
+                                    <div class="badge bronze">📈</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="performance-metrics">
+                        <div class="metric-card staff">
+                            <h3>📱 Clinical App Usage Analytics</h3>
+                            <div class="app-usage-list">
+                                <div class="app-item">
+                                    <div class="app-name">Practice Management System</div>
+                                    <div class="usage-bar">
+                                        <div class="usage-fill" style="width: 92%"></div>
+                                        <span class="usage-percent">92%</span>
+                                    </div>
+                                    <div class="top-user">Maria leads usage</div>
+                                </div>
+                                
+                                <div class="app-item">
+                                    <div class="app-name">Digital X-Ray System</div>
+                                    <div class="usage-bar">
+                                        <div class="usage-fill" style="width: 87%"></div>
+                                        <span class="usage-percent">87%</span>
+                                    </div>
+                                    <div class="top-user">Dr. Smith expert user</div>
+                                </div>
+                                
+                                <div class="app-item">
+                                    <div class="app-name">Insurance Processing</div>
+                                    <div class="usage-bar">
+                                        <div class="usage-fill" style="width: 78%"></div>
+                                        <span class="usage-percent">78%</span>
+                                    </div>
+                                    <div class="top-user">Lisa processing champion</div>
+                                </div>
+                                
+                                <div class="app-item">
+                                    <div class="app-name">Appointment Scheduler</div>
+                                    <div class="usage-bar">
+                                        <div class="usage-fill" style="width: 95%"></div>
+                                        <span class="usage-percent">95%</span>
+                                    </div>
+                                    <div class="top-user">Team effort excellence</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="achievements-card">
+                            <h3>🎯 Today's Clinical Achievements</h3>
+                            <div class="achievement-list">
+                                <div class="achievement-item completed">
+                                    <div class="achievement-icon">✅</div>
+                                    <div class="achievement-text">Lisa: Processed 15+ insurance claims (Streak: 5 days)</div>
+                                    <div class="achievement-points">+50 pts</div>
+                                </div>
+                                
+                                <div class="achievement-item completed">
+                                    <div class="achievement-icon">🎯</div>
+                                    <div class="achievement-text">Maria: 100% on-time patient appointments (Perfect Week!)</div>
+                                    <div class="achievement-points">+75 pts</div>
+                                </div>
+                                
+                                <div class="achievement-item completed">
+                                    <div class="achievement-icon">⚡</div>
+                                    <div class="achievement-text">Dr. Smith: 3 procedures under estimated time</div>
+                                    <div class="achievement-points">+40 pts</div>
+                                </div>
+                                
+                                <div class="achievement-item in-progress">
+                                    <div class="achievement-icon">⏳</div>
+                                    <div class="achievement-text">Team: Reach daily revenue goal (72% complete)</div>
+                                    <div class="achievement-points">+100 pts pending</div>
+                                </div>
+                                
+                                <div class="achievement-item">
+                                    <div class="achievement-icon">💰</div>
+                                    <div class="achievement-text">Bonus Challenge: Exceed goal by 20% (Team effort)</div>
+                                    <div class="achievement-points">+200 pts</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-challenges">
+                    <h3>🎮 Weekly Team Challenges</h3>
+                    <div class="challenges-grid">
+                        <div class="challenge-card active">
+                            <div class="challenge-title">Zero No-Shows Challenge</div>
+                            <div class="challenge-progress">
+                                <div class="progress-bar-challenge">
+                                    <div class="progress-fill-challenge" style="width: 83%"></div>
+                                </div>
+                                <span class="challenge-status">5/6 days perfect</span>
+                            </div>
+                            <div class="challenge-reward">🏆 Reward: $100 team lunch</div>
+                        </div>
+                        
+                        <div class="challenge-card">
+                            <div class="challenge-title">Insurance Claims Sprint</div>
+                            <div class="challenge-progress">
+                                <div class="progress-bar-challenge">
+                                    <div class="progress-fill-challenge" style="width: 67%"></div>
+                                </div>
+                                <span class="challenge-status">47/70 claims processed</span>
+                            </div>
+                            <div class="challenge-reward">🎁 Reward: Early Friday finish</div>
+                        </div>
+                        
+                        <div class="challenge-card completed">
+                            <div class="challenge-title">Patient Satisfaction Quest</div>
+                            <div class="challenge-progress">
+                                <div class="progress-bar-challenge">
+                                    <div class="progress-fill-challenge" style="width: 100%"></div>
+                                </div>
+                                <span class="challenge-status">100% positive reviews</span>
+                            </div>
+                            <div class="challenge-reward">✅ Completed! Extra PTO day earned</div>
+                        </div>
+                    </div>
+                </div>
             </section>
         </main>
 
         <footer>
-            <button id="save-sheet" class="save-btn">Save Day Sheet</button>
-            <button id="clear-sheet" class="clear-btn">Clear All</button>
+            <div class="footer-actions">
+                <button id="refresh-data" class="action-btn primary">🔄 Refresh Data</button>
+                <button id="print-sheet" class="action-btn secondary">🖨️ Print Day Sheet</button>
+                <button id="export-sheet" class="action-btn secondary">📊 Export to Excel</button>
+            </div>
         </footer>
     </div>
 

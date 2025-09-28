@@ -5,224 +5,788 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: #f8fafc;
     min-height: 100vh;
-    padding: 20px;
+    color: #334155;
+    line-height: 1.6;
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
     background: white;
-    border-radius: 15px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    min-height: 100vh;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
+/* Header Styles */
 header {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    color: white;
-    padding: 30px;
-    text-align: center;
+    background: white;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 24px 32px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-    font-weight: 300;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.date-info {
+    text-align: right;
 }
 
 #current-date {
-    font-size: 1.2em;
-    opacity: 0.9;
+    font-size: 16px;
+    font-weight: 500;
+    color: #475569;
+    margin: 0;
 }
 
+#practice-name {
+    font-size: 14px;
+    color: #64748b;
+    margin: 0;
+}
+
+/* Main Content */
 main {
-    padding: 30px;
+    padding: 32px;
+    display: grid;
+    gap: 32px;
 }
 
 section {
-    margin-bottom: 40px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
 }
 
 h2 {
-    color: #333;
+    color: #1e293b;
+    font-size: 20px;
+    font-weight: 600;
     margin-bottom: 20px;
-    font-size: 1.5em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Daily Goal Section */
+.practice-goals {
+    margin-bottom: 32px;
+}
+
+.practice-goals h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.goal-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.goal-item {
+    position: relative;
+}
+
+.goal-item label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #475569;
+    margin-bottom: 8px;
+}
+
+.goal-item input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e293b;
+    transition: border-color 0.2s;
+}
+
+.goal-item input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.currency, .unit {
+    position: absolute;
+    right: 16px;
+    top: 36px;
+    color: #64748b;
+    font-size: 16px;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+/* Individual Goals */
+.individual-goals h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.team-member-goals {
+    display: grid;
+    gap: 20px;
+}
+
+.member-goal-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    transition: box-shadow 0.2s;
+}
+
+.member-goal-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.member-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.member-header .member-avatar {
+    width: 40px;
+    height: 40px;
+    background: #3b82f6;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+    margin-right: 12px;
+}
+
+.member-info {
+    flex: 1;
+}
+
+.member-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 2px;
+}
+
+.member-role {
+    font-size: 13px;
+    color: #64748b;
+}
+
+.goal-status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
     font-weight: 500;
 }
 
-.priority-list {
-    margin-bottom: 15px;
+.goal-status.excellent {
+    background: #d1fae5;
+    color: #065f46;
 }
 
-.priority-item {
+.goal-status.ahead {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.goal-status.on-track {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.goal-status.behind {
+    background: #fecaca;
+    color: #991b1b;
+}
+
+.daily-targets {
+    display: grid;
+    gap: 12px;
+}
+
+.target-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.target-label {
+    font-size: 14px;
+    color: #475569;
+    font-weight: 500;
+}
+
+.target-progress {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
-    gap: 10px;
+    gap: 8px;
 }
 
-.priority-input, .schedule-input {
-    flex: 1;
-    padding: 12px 15px;
-    border: 2px solid #e1e5e9;
+.current {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.divider {
+    color: #94a3b8;
+}
+
+.target {
+    color: #64748b;
+}
+
+.progress-mini {
+    width: 60px;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill-mini {
+    height: 100%;
+    background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+/* Schedule Overview */
+.schedule-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.stat-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
     border-radius: 8px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
+    padding: 20px;
+    text-align: center;
 }
 
-.priority-input:focus, .schedule-input:focus {
-    outline: none;
-    border-color: #4facfe;
+.stat-number {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 4px;
 }
 
-.remove-btn {
-    background: #ff6b6b;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
-    font-size: 18px;
-    line-height: 1;
-    transition: background-color 0.3s ease;
+.stat-label {
+    font-size: 14px;
+    color: #64748b;
+    font-weight: 500;
 }
 
-.remove-btn:hover {
-    background: #ff5252;
-}
-
-.time-slots {
-    margin-bottom: 15px;
+/* Enhanced Patient Schedule */
+.patient-schedule {
+    display: grid;
+    gap: 16px;
 }
 
 .time-slot {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-    gap: 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px;
+    background: #fafbfc;
 }
 
-.time {
-    min-width: 80px;
+.time-slot.has-patients {
+    background: white;
+    border-color: #d1d5db;
+}
+
+.time-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.time-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.slot-status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
     font-weight: 500;
-    color: #666;
+}
+
+.slot-status.available {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.slot-status.booked {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.slot-status.overbooked {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+.patients-list {
+    display: grid;
+    gap: 12px;
+}
+
+.patient-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 16px;
+    background: white;
+    position: relative;
+}
+
+.patient-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.patient-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
+
+.appointment-type {
+    font-size: 14px;
+    color: #64748b;
+}
+
+.balance-info {
+    text-align: right;
     font-size: 14px;
 }
 
-.add-btn {
-    background: #4facfe;
+.balance-amount {
+    font-weight: 600;
+    color: #dc2626;
+    margin-bottom: 2px;
+}
+
+.balance-amount.paid {
+    color: #059669;
+}
+
+.insurance-status {
+    font-size: 12px;
+    color: #64748b;
+}
+
+.patient-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.detail-section h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.treatment-info {
+    background: #f8fafc;
+    padding: 12px;
+    border-radius: 6px;
+    border-left: 3px solid #3b82f6;
+}
+
+.next-treatment {
+    font-size: 14px;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
+
+.treatment-notes {
+    font-size: 12px;
+    color: #64748b;
+}
+
+.scheduling-options {
+    margin-top: 12px;
+}
+
+.can-do-today {
+    background: #10b981;
     color: white;
     border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
     cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
+    margin-right: 8px;
+    transition: background-color 0.2s;
 }
 
-.add-btn:hover {
-    background: #3b8bfe;
+.can-do-today:hover {
+    background: #059669;
 }
 
-#daily-notes {
-    width: 100%;
-    min-height: 120px;
-    padding: 15px;
-    border: 2px solid #e1e5e9;
+.schedule-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.schedule-btn {
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.schedule-btn:hover {
+    background: #e2e8f0;
+}
+
+.recommended-times {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    display: none;
+    margin-top: 4px;
+}
+
+.recommended-times.show {
+    display: block;
+}
+
+.time-option {
+    padding: 8px 12px;
+    border-bottom: 1px solid #f1f5f9;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.2s;
+}
+
+.time-option:last-child {
+    border-bottom: none;
+}
+
+.time-option:hover {
+    background: #f8fafc;
+}
+
+.time-option .date {
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.time-option .slot {
+    color: #64748b;
+    margin-left: 8px;
+}
+
+.add-patient-btn {
+    border: 2px dashed #d1d5db;
+    background: #f9fafb;
+    color: #6b7280;
+    padding: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.add-patient-btn:hover {
+    border-color: #9ca3af;
+    background: #f3f4f6;
+}
+
+/* Progress Tracker */
+.progress-container {
+    position: relative;
+}
+
+.progress-bar {
+    background: #e2e8f0;
     border-radius: 8px;
-    font-size: 16px;
-    font-family: inherit;
-    resize: vertical;
-    transition: border-color 0.3s ease;
+    height: 40px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
 }
 
-#daily-notes:focus {
-    outline: none;
-    border-color: #4facfe;
+.progress-fill {
+    background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+    height: 100%;
+    border-radius: 8px;
+    transition: width 0.5s ease;
+    position: relative;
 }
 
-footer {
-    background: #f8f9fa;
-    padding: 20px 30px;
+.bonus-threshold {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    font-weight: 600;
+    color: #475569;
+    background: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+}
+
+.progress-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.progress-stat {
+    text-align: center;
+}
+
+.progress-stat .label {
+    display: block;
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 4px;
+}
+
+.progress-stat .value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+/* AI Insights */
+.insights-container {
+    display: grid;
+    gap: 16px;
+}
+
+.insight-card {
     display: flex;
-    justify-content: space-between;
-    gap: 15px;
-}
-
-.save-btn {
-    background: #28a745;
-    color: white;
-    border: none;
-    padding: 12px 25px;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 20px;
     border-radius: 8px;
-    cursor: pointer;
+    border-left: 4px solid #e2e8f0;
+}
+
+.insight-card.priority-high {
+    background: #fef2f2;
+    border-left-color: #ef4444;
+}
+
+.insight-card.priority-medium {
+    background: #fffbeb;
+    border-left-color: #f59e0b;
+}
+
+.insight-card.priority-low {
+    background: #f0f9ff;
+    border-left-color: #3b82f6;
+}
+
+.insight-icon {
+    font-size: 24px;
+    line-height: 1;
+}
+
+.insight-content {
+    flex: 1;
+}
+
+.insight-content h3 {
     font-size: 16px;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 8px;
 }
 
-.save-btn:hover {
-    background: #218838;
+.insight-content p {
+    font-size: 14px;
+    color: #475569;
+    margin-bottom: 12px;
 }
 
-.clear-btn {
-    background: #6c757d;
-    color: white;
+.insight-action {
+    margin-top: 12px;
+}
+
+/* Buttons */
+.action-btn {
     border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
     font-weight: 500;
-    transition: background-color 0.3s ease;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
 
-.clear-btn:hover {
-    background: #5a6268;
+.action-btn.primary {
+    background: #3b82f6;
+    color: white;
 }
 
+.action-btn.primary:hover {
+    background: #2563eb;
+}
+
+.action-btn.secondary {
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+}
+
+.action-btn.secondary:hover {
+    background: #e2e8f0;
+}
+
+.action-btn:not(.primary):not(.secondary) {
+    background: #f8fafc;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+}
+
+.action-btn:not(.primary):not(.secondary):hover {
+    background: #f1f5f9;
+}
+
+/* Footer */
+footer {
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    padding: 20px 32px;
+}
+
+.footer-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-    .container {
-        margin: 10px;
-        border-radius: 10px;
-    }
-    
-    header {
-        padding: 20px;
-    }
-    
-    header h1 {
-        font-size: 2em;
-    }
-    
     main {
         padding: 20px;
+        gap: 24px;
     }
     
-    .time-slot {
+    .header-content {
         flex-direction: column;
-        align-items: stretch;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .date-info {
+        text-align: left;
+    }
+    
+    .goal-container,
+    .schedule-stats,
+    .progress-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .member-header {
+        flex-direction: column;
+        align-items: flex-start;
         gap: 8px;
     }
     
-    .time {
-        min-width: auto;
-        text-align: center;
-        background: #f8f9fa;
-        padding: 8px;
-        border-radius: 5px;
-    }
-    
-    footer {
+    .target-item {
         flex-direction: column;
-        gap: 10px;
+        align-items: flex-start;
+        gap: 8px;
     }
     
-    footer button {
-        width: 100%;
+    .target-progress {
+        align-self: stretch;
+        justify-content: space-between;
+    }
+    
+    .patient-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .patient-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .balance-info {
+        text-align: left;
+    }
+    
+    .footer-actions {
+        flex-direction: column;
+    }
+    
+    .action-btn {
+        justify-content: center;
     }
 }
