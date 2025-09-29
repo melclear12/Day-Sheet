@@ -21,35 +21,41 @@ class DaySheet {
     }
 
     bindEvents() {
-        // Add priority button
-        document.getElementById('add-priority').addEventListener('click', () => {
-            this.addPriorityItem();
-        });
+        // Refresh data button
+        const refreshBtn = document.getElementById('refresh-data');
+        if (refreshBtn) {
+            refreshBtn.addEventListener('click', () => {
+                this.refreshData();
+            });
+        }
 
-        // Add time slot button
-        document.getElementById('add-time-slot').addEventListener('click', () => {
-            this.addTimeSlot();
-        });
+        // Print sheet button
+        const printBtn = document.getElementById('print-sheet');
+        if (printBtn) {
+            printBtn.addEventListener('click', () => {
+                this.printSheet();
+            });
+        }
 
-        // Save sheet button
-        document.getElementById('save-sheet').addEventListener('click', () => {
-            this.saveSheet();
-        });
+        // Export sheet button  
+        const exportBtn = document.getElementById('export-sheet');
+        if (exportBtn) {
+            exportBtn.addEventListener('click', () => {
+                this.exportSheet();
+            });
+        }
 
-        // Clear sheet button
-        document.getElementById('clear-sheet').addEventListener('click', () => {
-            this.clearSheet();
-        });
-
-        // Remove buttons for existing priority items
-        this.bindRemoveButtons();
+        // Bind dropdown toggles for smart scheduling
+        this.bindSchedulingDropdowns();
+        
+        // Bind report tab switching
+        this.bindReportTabs();
 
         // Auto-save on input changes
         document.addEventListener('input', (e) => {
-            if (e.target.classList.contains('priority-input') || 
-                e.target.classList.contains('schedule-input') || 
-                e.target.id === 'daily-notes') {
-                this.autoSave();
+            if (e.target.id === 'revenue-goal' || 
+                e.target.id === 'patient-goal') {
+                this.updateGoals();
             }
         });
     }
@@ -113,20 +119,87 @@ class DaySheet {
         });
     }
 
-    saveSheet() {
-        const data = this.collectData();
-        localStorage.setItem('daySheet', JSON.stringify(data));
+    refreshData() {
+        // Simulate data refresh
+        console.log('Refreshing practice data...');
+        this.updateMetrics();
+    }
+
+    printSheet() {
+        window.print();
+    }
+
+    exportSheet() {
+        // Simulate export functionality
+        console.log('Exporting day sheet to Excel...');
+        alert('Day sheet export feature coming soon!');
+    }
+
+    bindSchedulingDropdowns() {
+        const dropdowns = document.querySelectorAll('.schedule-dropdown');
+        dropdowns.forEach(dropdown => {
+            const btn = dropdown.querySelector('.schedule-btn');
+            const times = dropdown.querySelector('.recommended-times');
+            
+            if (btn && times) {
+                btn.addEventListener('click', () => {
+                    times.classList.toggle('show');
+                });
+            }
+        });
+    }
+
+    updateGoals() {
+        // Update goal progress when inputs change
+        const revenueGoal = document.getElementById('revenue-goal').value;
+        const patientGoal = document.getElementById('patient-goal').value;
         
-        // Show save confirmation
-        const saveBtn = document.getElementById('save-sheet');
-        const originalText = saveBtn.textContent;
-        saveBtn.textContent = 'Saved!';
-        saveBtn.style.background = '#20c997';
-        
-        setTimeout(() => {
-            saveBtn.textContent = originalText;
-            saveBtn.style.background = '#28a745';
-        }, 2000);
+        console.log(`Goals updated: Revenue $${revenueGoal}, Patients ${patientGoal}`);
+    }
+
+    updateMetrics() {
+        // Update various metrics and progress bars
+        const progressFill = document.getElementById('goal-progress');
+        if (progressFill) {
+            // Simulate progress update
+            const currentProgress = Math.floor(Math.random() * 100);
+            progressFill.style.width = currentProgress + '%';
+        }
+    }
+
+    bindReportTabs() {
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const dayView = document.querySelector('main');
+        const morningHuddle = document.querySelector('.morning-huddle-report');
+        const endOfDay = document.querySelector('.end-of-day-report');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all tabs
+                tabBtns.forEach(tab => tab.classList.remove('active'));
+                // Add active class to clicked tab
+                btn.classList.add('active');
+
+                // Hide all report sections
+                if (dayView) dayView.style.display = 'none';
+                if (morningHuddle) morningHuddle.classList.add('hidden');
+                if (endOfDay) endOfDay.classList.add('hidden');
+
+                // Show selected report
+                const reportType = btn.getAttribute('data-report');
+                switch(reportType) {
+                    case 'day-view':
+                        if (dayView) dayView.style.display = 'grid';
+                        break;
+                    case 'morning-huddle':
+                        if (morningHuddle) morningHuddle.classList.remove('hidden');
+                        break;
+                    case 'end-of-day':
+                        if (endOfDay) endOfDay.classList.remove('hidden');
+                        break;
+                }
+            });
+        });
     }
 
     autoSave() {
@@ -227,31 +300,9 @@ class DaySheet {
         document.getElementById('daily-notes').value = data.notes || '';
     }
 
-    clearSheet() {
-        if (confirm('Are you sure you want to clear all data? This cannot be undone.')) {
-            // Clear all inputs
-            document.querySelectorAll('.priority-input, .schedule-input').forEach(input => {
-                input.value = '';
-            });
-            document.getElementById('daily-notes').value = '';
-            
-            // Remove extra priority items (keep first 3)
-            const priorityItems = document.querySelectorAll('.priority-item');
-            for (let i = 3; i < priorityItems.length; i++) {
-                priorityItems[i].remove();
-            }
-            
-            // Remove extra time slots (keep original 5)
-            const timeSlots = document.querySelectorAll('.time-slot');
-            for (let i = 5; i < timeSlots.length; i++) {
-                timeSlots[i].remove();
-            }
-            
-            // Clear saved data
-            localStorage.removeItem('daySheet');
-            localStorage.removeItem('daySheet_auto');
-        }
-    }
+    // Remove old methods that are no longer needed
+    // addPriorityItem, addTimeSlot, clearSheet, etc. are not needed
+    // for the new medical practice day sheet structure
 }
 
 // Initialize the app when DOM is loaded

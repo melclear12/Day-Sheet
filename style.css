@@ -790,3 +790,551 @@ footer {
         justify-content: center;
     }
 }
+
+/* Template-based KPI Cards - Inspired by mobile template */
+.kpi-section h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.kpi-template-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.kpi-template-card {
+    background: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 32px 24px;
+    text-align: left;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.kpi-template-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.kpi-icon {
+    font-size: 32px;
+    margin-bottom: 20px;
+    display: block;
+    opacity: 0.8;
+    color: #4f46e5;
+}
+
+.kpi-large-number {
+    font-size: 64px;
+    font-weight: 800;
+    color: #1e293b;
+    line-height: 0.9;
+    margin: 0;
+    display: block;
+    letter-spacing: -0.02em;
+}
+
+.kpi-unit {
+    font-size: 20px;
+    color: #64748b;
+    font-weight: 600;
+    margin: 8px 0 0 0;
+    display: inline;
+    margin-left: 4px;
+}
+
+.kpi-label {
+    font-size: 15px;
+    color: #64748b;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-top: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Specific card colors based on template style */
+.kpi-template-card:nth-child(1) {
+    background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+}
+
+.kpi-template-card:nth-child(2) {
+    background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+}
+
+.kpi-template-card:nth-child(3) {
+    background: linear-gradient(135deg, #fefce8 0%, #ffffff 100%);
+}
+
+.kpi-template-card:nth-child(4) {
+    background: linear-gradient(135deg, #fdf2f8 0%, #ffffff 100%);
+}
+
+.kpi-template-card:nth-child(5) {
+    background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%);
+}
+
+.kpi-template-card:nth-child(6) {
+    background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%);
+}
+
+/* PMS Integration Styles */
+.pms-integration {
+    margin-bottom: 32px;
+}
+
+.pms-status {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+}
+
+.pms-card {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    gap: 12px;
+    transition: all 0.2s ease;
+}
+
+.pms-card.active {
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+.pms-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.pms-logo {
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8fafc;
+    border-radius: 8px;
+}
+
+.pms-info {
+    flex: 1;
+}
+
+.pms-name {
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 2px;
+}
+
+.pms-status-text {
+    font-size: 14px;
+    color: #64748b;
+}
+
+.sync-indicator {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.sync-indicator.green {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.sync-indicator.gray {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+/* Report Toggle Styles */
+.report-toggle {
+    background: white;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0 32px;
+    margin: -32px -32px 32px -32px;
+}
+
+.report-tabs {
+    display: flex;
+    gap: 0;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 16px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #64748b;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.tab-btn.active {
+    color: #3b82f6;
+    border-bottom-color: #3b82f6;
+    background: #f8fafc;
+}
+
+.tab-btn:hover {
+    color: #1e293b;
+    background: #f8fafc;
+}
+
+/* Report Sections */
+.morning-huddle-report,
+.end-of-day-report {
+    margin-top: -32px;
+    padding-top: 32px;
+}
+
+.hidden {
+    display: none;
+}
+
+.report-timestamp {
+    color: #64748b;
+    font-size: 14px;
+    margin-bottom: 24px;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* Morning Huddle Styles */
+.huddle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 24px;
+}
+
+.huddle-section {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.huddle-section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.schedule-summary,
+.financial-focus {
+    display: grid;
+    gap: 12px;
+}
+
+.summary-stat,
+.focus-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.summary-stat:last-child,
+.focus-item:last-child {
+    border-bottom: none;
+}
+
+.stat-label,
+.focus-label {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.stat-value,
+.focus-value {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.alert-list {
+    display: grid;
+    gap: 8px;
+}
+
+.alert-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.alert-item.high {
+    background: #fef2f2;
+    border-left: 3px solid #ef4444;
+}
+
+.alert-item.medium {
+    background: #fffbeb;
+    border-left: 3px solid #f59e0b;
+}
+
+.alert-text {
+    font-size: 14px;
+    color: #374151;
+}
+
+.outstanding-list,
+.team-assignments,
+.daily-goals {
+    display: grid;
+    gap: 8px;
+}
+
+.outstanding-item,
+.assignment,
+.goal-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 14px;
+}
+
+.outstanding-item:last-child,
+.assignment:last-child,
+.goal-item:last-child {
+    border-bottom: none;
+}
+
+.item-type,
+.staff-name {
+    font-weight: 500;
+    color: #374151;
+}
+
+.item-count,
+.assignment-text {
+    color: #64748b;
+}
+
+.goal-text {
+    color: #374151;
+}
+
+/* End of Day Styles */
+.eod-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+}
+
+.eod-section {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.eod-section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.production-summary {
+    display: grid;
+    gap: 8px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.summary-row.total {
+    border-top: 2px solid #e2e8f0;
+    border-bottom: none;
+    font-weight: 600;
+    margin-top: 8px;
+    padding-top: 12px;
+}
+
+.summary-label {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.summary-value {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.summary-value.success {
+    color: #059669;
+}
+
+.summary-note {
+    font-size: 12px;
+    color: #64748b;
+    margin-left: 8px;
+}
+
+.patient-activity {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.activity-stat {
+    text-align: center;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 8px;
+}
+
+.stat-number {
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.payment-breakdown,
+.treatment-plans,
+.tomorrow-prep,
+.team-performance {
+    display: grid;
+    gap: 8px;
+}
+
+.payment-item,
+.plan-item,
+.prep-item,
+.perf-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 14px;
+}
+
+.payment-item:last-child,
+.plan-item:last-child,
+.prep-item:last-child,
+.perf-item:last-child {
+    border-bottom: none;
+}
+
+.plan-item.accepted .plan-status {
+    color: #059669;
+}
+
+.plan-item.pending .plan-status {
+    color: #d97706;
+}
+
+.plan-item.declined .plan-status {
+    color: #dc2626;
+}
+
+.prep-item {
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.prep-icon {
+    font-size: 16px;
+    margin-top: 2px;
+}
+
+.prep-text {
+    flex: 1;
+    color: #374151;
+}
+
+/* Responsive adjustments for KPI template */
+@media (max-width: 768px) {
+    .kpi-template-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+    
+    .kpi-template-card {
+        padding: 24px 16px;
+        min-height: 140px;
+    }
+    
+    .kpi-large-number {
+        font-size: 48px;
+    }
+    
+    .kpi-icon {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+    
+    .kpi-label {
+        font-size: 13px;
+        margin-top: 12px;
+    }
+    
+    .huddle-grid,
+    .eod-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .report-tabs {
+        flex-direction: column;
+    }
+    
+    .tab-btn {
+        text-align: left;
+        border-bottom: 1px solid #e2e8f0;
+        border-radius: 0;
+    }
+    
+    .patient-activity {
+        grid-template-columns: 1fr;
+    }
+    
+    .pms-status {
+        grid-template-columns: 1fr;
+    }
+}

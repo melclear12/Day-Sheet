@@ -13,7 +13,7 @@
                 <h1>Day Sheet</h1>
                 <div class="date-info">
                     <p id="current-date"></p>
-                    <p id="practice-name">Medical Practice</p>
+                    <p id="practice-name">Dental Practice</p>
                 </div>
             </div>
         </header>
@@ -244,6 +244,39 @@
                 </div>
             </section>
 
+            <!-- PMS Integration Status -->
+            <section class="pms-integration">
+                <h2>🔗 Practice Management System</h2>
+                <div class="pms-status">
+                    <div class="pms-card active">
+                        <div class="pms-logo">📊</div>
+                        <div class="pms-info">
+                            <div class="pms-name">Ascend</div>
+                            <div class="pms-status-text">Connected</div>
+                        </div>
+                        <div class="sync-indicator green">✓ Synced 2m ago</div>
+                    </div>
+                    
+                    <div class="pms-card">
+                        <div class="pms-logo">🦷</div>
+                        <div class="pms-info">
+                            <div class="pms-name">Dentrix</div>
+                            <div class="pms-status-text">Available</div>
+                        </div>
+                        <div class="sync-indicator gray">Not connected</div>
+                    </div>
+                    
+                    <div class="pms-card">
+                        <div class="pms-logo">💰</div>
+                        <div class="pms-info">
+                            <div class="pms-name">QuickBooks</div>
+                            <div class="pms-status-text">Connected</div>
+                        </div>
+                        <div class="sync-indicator green">✓ Auto-sync</div>
+                    </div>
+                </div>
+            </section>
+
             <!-- Current Schedule Overview -->
             <section class="schedule-overview">
                 <h2>What's on the schedule already?</h2>
@@ -273,23 +306,24 @@
                                 <div class="patient-header">
                                     <div>
                                         <div class="patient-name">Sarah Martinez</div>
-                                        <div class="appointment-type">Consultation & Cleaning</div>
+                                        <div class="appointment-type">Prophy & Exam (ADA D1110, D0150)</div>
                                     </div>
                                     <div class="balance-info">
                                         <div class="balance-amount">$185.00</div>
-                                        <div class="insurance-status">Insurance pending</div>
+                                        <div class="insurance-status">Delta Dental pending</div>
                                     </div>
                                 </div>
                                 <div class="patient-details">
                                     <div class="detail-section">
-                                        <h4>Account Status</h4>
-                                        <div>Outstanding: $185.00</div>
-                                        <div>Insurance claim: $320.00 pending</div>
+                                        <h4>Account Status (Ascend ID: 14592)</h4>
+                                        <div>Patient Portion: $185.00</div>
+                                        <div>Insurance claim: $320.00 pending (Delta Dental)</div>
+                                        <div>Last Visit: 03/15/2025</div>
                                     </div>
                                     <div class="detail-section">
                                         <div class="treatment-info">
-                                            <div class="next-treatment">Next: Crown prep #14</div>
-                                            <div class="treatment-notes">Est. 90 min, $850</div>
+                                            <div class="next-treatment">Next: Crown prep #14 (ADA D2740)</div>
+                                            <div class="treatment-notes">Est. 90 min, $850 (Insurance pre-auth approved)</div>
                                             <div class="scheduling-options">
                                                 <button class="can-do-today">Can do today?</button>
                                                 <div class="schedule-dropdown">
@@ -318,23 +352,24 @@
                                 <div class="patient-header">
                                     <div>
                                         <div class="patient-name">John Davis</div>
-                                        <div class="appointment-type">Follow-up Exam</div>
+                                        <div class="appointment-type">Recall Exam (ADA D0120)</div>
                                     </div>
                                     <div class="balance-info">
                                         <div class="balance-amount paid">$0.00</div>
-                                        <div class="insurance-status">Paid in full</div>
+                                        <div class="insurance-status">MetLife - Paid in full</div>
                                     </div>
                                 </div>
                                 <div class="patient-details">
                                     <div class="detail-section">
-                                        <h4>Account Status</h4>
+                                        <h4>Account Status (Dentrix ID: 28547)</h4>
                                         <div>Current balance: $0.00</div>
-                                        <div>Last payment: Sep 15</div>
+                                        <div>Last payment: Sep 15 ($150 - MetLife)</div>
+                                        <div>Insurance Benefits Used: $450/$1000 YTD</div>
                                     </div>
                                     <div class="detail-section">
                                         <div class="treatment-info">
-                                            <div class="next-treatment">Next: Root canal #19</div>
-                                            <div class="treatment-notes">Est. 120 min, $1,200</div>
+                                            <div class="next-treatment">Next: RCT #19 (ADA D3310)</div>
+                                            <div class="treatment-notes">Est. 120 min, $1,200 (50% covered by MetLife)</div>
                                             <div class="scheduling-options">
                                                 <div class="schedule-dropdown">
                                                     <button class="schedule-btn">Smart Schedule ▼</button>
@@ -354,23 +389,24 @@
                                 <div class="patient-header">
                                     <div>
                                         <div class="patient-name">Emma Wilson</div>
-                                        <div class="appointment-type">Orthodontic Adjustment</div>
+                                        <div class="appointment-type">Ortho Adjustment (ADA D8670)</div>
                                     </div>
                                     <div class="balance-info">
                                         <div class="balance-amount">$275.00</div>
-                                        <div class="insurance-status">Payment plan</div>
+                                        <div class="insurance-status">Payment plan (CareCredit)</div>
                                     </div>
                                 </div>
                                 <div class="patient-details">
                                     <div class="detail-section">
-                                        <h4>Account Status</h4>
+                                        <h4>Account Status (Open Dental ID: 36821)</h4>
                                         <div>Outstanding: $275.00</div>
-                                        <div>Payment plan: $50/month</div>
+                                        <div>Payment plan: $50/month (CareCredit)</div>
+                                        <div>Ortho Contract: 18 months remaining</div>
                                     </div>
                                     <div class="detail-section">
                                         <div class="treatment-info">
-                                            <div class="next-treatment">Next: Adjustment visit</div>
-                                            <div class="treatment-notes">Est. 30 min, $150</div>
+                                            <div class="next-treatment">Next: Ortho adjustment (ADA D8670)</div>
+                                            <div class="treatment-notes">Est. 30 min, $150 (6-week interval)</div>
                                             <div class="scheduling-options">
                                                 <button class="can-do-today">Can do today?</button>
                                                 <div class="schedule-dropdown">
@@ -408,11 +444,19 @@
                                 <div class="patient-header">
                                     <div>
                                         <div class="patient-name">Michael Chen</div>
-                                        <div class="appointment-type">Crown Prep</div>
+                                        <div class="appointment-type">Crown Prep & Temp (ADA D2740, D2799)</div>
                                     </div>
                                     <div class="balance-info">
                                         <div class="balance-amount">$450.00</div>
-                                        <div class="insurance-status">Pre-auth approved</div>
+                                        <div class="insurance-status">Cigna pre-auth approved</div>
+                                    </div>
+                                </div>
+                                <div class="patient-details">
+                                    <div class="detail-section">
+                                        <h4>Account Status (Eaglesoft ID: 52194)</h4>
+                                        <div>Patient Portion: $450.00 (50% co-pay)</div>
+                                        <div>Insurance covers: $450.00 (Cigna)</div>
+                                        <div>Crown delivery scheduled: Oct 15</div>
                                     </div>
                                 </div>
                             </div>
@@ -506,51 +550,47 @@
 
                 <div class="kpi-section">
                     <h3>Key Performance Indicators</h3>
-                    <div class="kpi-grid">
-                        <div class="kpi-card">
-                            <div class="kpi-title">Collections Rate</div>
-                            <div class="kpi-value">94.2%</div>
-                            <div class="kpi-target">Target: 95%</div>
-                            <div class="kpi-progress">
-                                <div class="progress-bar-small">
-                                    <div class="progress-fill-small" style="width: 94.2%"></div>
-                                </div>
-                            </div>
+                    <div class="kpi-template-grid">
+                        <div class="kpi-template-card">
+                            <div class="kpi-icon">👍</div>
+                            <div class="kpi-large-number">94</div>
+                            <div class="kpi-unit">%</div>
+                            <div class="kpi-label">Collections Rate</div>
                         </div>
                         
-                        <div class="kpi-card">
-                            <div class="kpi-title">Average Revenue per Patient</div>
-                            <div class="kpi-value">$217</div>
-                            <div class="kpi-target">Target: $200</div>
-                            <div class="kpi-indicator positive">↗ +8.5%</div>
+                        <div class="kpi-template-card">
+                            <div class="kpi-icon">💬</div>
+                            <div class="kpi-large-number">217</div>
+                            <div class="kpi-unit">$</div>
+                            <div class="kpi-label">Avg Revenue/Patient</div>
                         </div>
                         
-                        <div class="kpi-card">
-                            <div class="kpi-title">No-Show Rate</div>
-                            <div class="kpi-value">8.3%</div>
-                            <div class="kpi-target">Target: <10%</div>
-                            <div class="kpi-indicator positive">↘ -2.1%</div>
+                        <div class="kpi-template-card">
+                            <div class="kpi-icon">👁</div>
+                            <div class="kpi-large-number">8</div>
+                            <div class="kpi-unit">%</div>
+                            <div class="kpi-label">No-Show Rate</div>
                         </div>
                         
-                        <div class="kpi-card">
-                            <div class="kpi-title">Outstanding AR</div>
-                            <div class="kpi-value">$23,400</div>
-                            <div class="kpi-target">30-day avg</div>
-                            <div class="kpi-indicator neutral">→ Stable</div>
+                        <div class="kpi-template-card">
+                            <div class="kpi-icon">💰</div>
+                            <div class="kpi-large-number">23</div>
+                            <div class="kpi-unit">K</div>
+                            <div class="kpi-label">Outstanding AR</div>
                         </div>
                         
-                        <div class="kpi-card">
-                            <div class="kpi-title">Insurance Claims Pending</div>
-                            <div class="kpi-value">47</div>
-                            <div class="kpi-target">Avg: $685 each</div>
-                            <div class="kpi-indicator negative">↗ +5 this week</div>
+                        <div class="kpi-template-card">
+                            <div class="kpi-icon">📋</div>
+                            <div class="kpi-large-number">47</div>
+                            <div class="kpi-unit"></div>
+                            <div class="kpi-label">Pending Claims</div>
                         </div>
                         
-                        <div class="kpi-card">
-                            <div class="kpi-title">Case Acceptance Rate</div>
-                            <div class="kpi-value">78%</div>
-                            <div class="kpi-target">Target: 75%</div>
-                            <div class="kpi-indicator positive">↗ +3%</div>
+                        <div class="kpi-template-card">
+                            <div class="kpi-icon">✅</div>
+                            <div class="kpi-large-number">78</div>
+                            <div class="kpi-unit">%</div>
+                            <div class="kpi-label">Case Acceptance</div>
                         </div>
                     </div>
                 </div>
@@ -854,10 +894,294 @@
             </section>
         </main>
 
+        <!-- Report Toggle Section -->
+        <section class="report-toggle">
+            <div class="report-tabs">
+                <button class="tab-btn active" data-report="day-view">📋 Live Day Sheet</button>
+                <button class="tab-btn" data-report="morning-huddle">☀️ Morning Huddle</button>
+                <button class="tab-btn" data-report="end-of-day">🌙 End of Day</button>
+            </div>
+        </section>
+
+        <!-- Morning Huddle Report -->
+        <section class="morning-huddle-report hidden">
+            <h2>☀️ Morning Huddle Report</h2>
+            <div class="report-timestamp">Generated: Monday, September 29, 2025 - 7:45 AM</div>
+            
+            <div class="huddle-grid">
+                <div class="huddle-section">
+                    <h3>📅 Today's Schedule Summary</h3>
+                    <div class="schedule-summary">
+                        <div class="summary-stat">
+                            <span class="stat-label">Total Patients:</span>
+                            <span class="stat-value">18</span>
+                        </div>
+                        <div class="summary-stat">
+                            <span class="stat-label">Production Goal:</span>
+                            <span class="stat-value">$5,000</span>
+                        </div>
+                        <div class="summary-stat">
+                            <span class="stat-label">Open Slots:</span>
+                            <span class="stat-value">3</span>
+                        </div>
+                        <div class="summary-stat">
+                            <span class="stat-label">Pre-Block Time:</span>
+                            <span class="stat-value">2.5 hrs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="huddle-section">
+                    <h3>⚠️ Patient Alerts & Special Needs</h3>
+                    <div class="alert-list">
+                        <div class="alert-item high">
+                            <span class="alert-icon">🔴</span>
+                            <span class="alert-text">Sarah Martinez - Anxiety patient (needs sedation discussion)</span>
+                        </div>
+                        <div class="alert-item medium">
+                            <span class="alert-icon">🟡</span>
+                            <span class="alert-text">John Davis - Diabetic (check blood sugar before procedure)</span>
+                        </div>
+                        <div class="alert-item medium">
+                            <span class="alert-icon">🟡</span>
+                            <span class="alert-text">Emma Wilson - Minor (parent consent required for ortho adjustment)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="huddle-section">
+                    <h3>💰 Financial Focus</h3>
+                    <div class="financial-focus">
+                        <div class="focus-item">
+                            <span class="focus-label">Large Cases to Present:</span>
+                            <span class="focus-value">$3,200 (2 cases)</span>
+                        </div>
+                        <div class="focus-item">
+                            <span class="focus-label">Collections Target:</span>
+                            <span class="focus-value">$4,200</span>
+                        </div>
+                        <div class="focus-item">
+                            <span class="focus-label">Insurance Auths Needed:</span>
+                            <span class="focus-value">3 pending</span>
+                        </div>
+                        <div class="focus-item">
+                            <span class="focus-label">Payment Plans to Discuss:</span>
+                            <span class="focus-value">2 patients</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="huddle-section">
+                    <h3>📞 Outstanding Items</h3>
+                    <div class="outstanding-list">
+                        <div class="outstanding-item">
+                            <span class="item-type">Recalls Overdue:</span>
+                            <span class="item-count">12 patients (6mo+)</span>
+                        </div>
+                        <div class="outstanding-item">
+                            <span class="item-type">Unscheduled Treatment:</span>
+                            <span class="item-count">$8,400 pending</span>
+                        </div>
+                        <div class="outstanding-item">
+                            <span class="item-type">Confirmations Needed:</span>
+                            <span class="item-count">5 for tomorrow</span>
+                        </div>
+                        <div class="outstanding-item">
+                            <span class="item-type">Lab Cases Due:</span>
+                            <span class="item-count">2 crowns (Oct 15)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="huddle-section">
+                    <h3>👥 Team Assignments</h3>
+                    <div class="team-assignments">
+                        <div class="assignment">
+                            <span class="staff-name">Dr. Smith:</span>
+                            <span class="assignment-text">Focus on treatment plan presentations (Sarah, Michael)</span>
+                        </div>
+                        <div class="assignment">
+                            <span class="staff-name">Lisa (Admin):</span>
+                            <span class="assignment-text">Insurance follow-ups, recall calls during lunch</span>
+                        </div>
+                        <div class="assignment">
+                            <span class="staff-name">Maria (Hygienist):</span>
+                            <span class="assignment-text">Perio charting updates, fluoride applications</span>
+                        </div>
+                        <div class="assignment">
+                            <span class="staff-name">Jessica (Assistant):</span>
+                            <span class="assignment-text">Pre-op setup for crown preps, sterilization priority</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="huddle-section">
+                    <h3>🎯 Daily Goals & Focus</h3>
+                    <div class="daily-goals">
+                        <div class="goal-item">
+                            <span class="goal-text">Present 2 comprehensive treatment plans</span>
+                        </div>
+                        <div class="goal-item">
+                            <span class="goal-text">Schedule 3 patients from recall list</span>
+                        </div>
+                        <div class="goal-item">
+                            <span class="goal-text">Collect $2,000+ in outstanding balances</span>
+                        </div>
+                        <div class="goal-item">
+                            <span class="goal-text">Zero no-shows (confirmation calls complete)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- End of Day Report -->
+        <section class="end-of-day-report hidden">
+            <h2>🌙 End of Day Report</h2>
+            <div class="report-timestamp">Generated: Monday, September 29, 2025 - 6:15 PM</div>
+            
+            <div class="eod-grid">
+                <div class="eod-section">
+                    <h3>📊 Production Summary</h3>
+                    <div class="production-summary">
+                        <div class="summary-row">
+                            <span class="summary-label">Today's Production:</span>
+                            <span class="summary-value success">$5,240.00</span>
+                            <span class="summary-note">(Goal: $5,000 ✓)</span>
+                        </div>
+                        <div class="summary-row">
+                            <span class="summary-label">Collections:</span>
+                            <span class="summary-value">$4,380.00</span>
+                            <span class="summary-note">(Goal: $4,200 ✓)</span>
+                        </div>
+                        <div class="summary-row">
+                            <span class="summary-label">Adjustments:</span>
+                            <span class="summary-value">-$125.00</span>
+                            <span class="summary-note">(Professional courtesy)</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span class="summary-label">Net Production:</span>
+                            <span class="summary-value">$5,115.00</span>
+                            <span class="summary-note">(+2.3% vs goal)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="eod-section">
+                    <h3>👥 Patient Activity</h3>
+                    <div class="patient-activity">
+                        <div class="activity-stat">
+                            <span class="stat-number">16</span>
+                            <span class="stat-label">Patients Seen</span>
+                        </div>
+                        <div class="activity-stat">
+                            <span class="stat-number">2</span>
+                            <span class="stat-label">No Shows</span>
+                        </div>
+                        <div class="activity-stat">
+                            <span class="stat-number">1</span>
+                            <span class="stat-label">Cancellations</span>
+                        </div>
+                        <div class="activity-stat">
+                            <span class="stat-number">3</span>
+                            <span class="stat-label">New Patients</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="eod-section">
+                    <h3>💳 Payment Methods</h3>
+                    <div class="payment-breakdown">
+                        <div class="payment-item">
+                            <span class="payment-method">Cash/Check:</span>
+                            <span class="payment-amount">$1,200.00</span>
+                        </div>
+                        <div class="payment-item">
+                            <span class="payment-method">Credit Card:</span>
+                            <span class="payment-amount">$2,180.00</span>
+                        </div>
+                        <div class="payment-item">
+                            <span class="payment-method">Insurance:</span>
+                            <span class="payment-amount">$850.00</span>
+                        </div>
+                        <div class="payment-item">
+                            <span class="payment-method">CareCredit:</span>
+                            <span class="payment-amount">$150.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="eod-section">
+                    <h3>📋 Treatment Plans Presented</h3>
+                    <div class="treatment-plans">
+                        <div class="plan-item accepted">
+                            <span class="patient-name">Sarah Martinez</span>
+                            <span class="plan-amount">$850.00</span>
+                            <span class="plan-status">✅ Accepted</span>
+                        </div>
+                        <div class="plan-item pending">
+                            <span class="patient-name">Michael Chen</span>
+                            <span class="plan-amount">$2,400.00</span>
+                            <span class="plan-status">⏳ Considering</span>
+                        </div>
+                        <div class="plan-item declined">
+                            <span class="patient-name">Jennifer Walsh</span>
+                            <span class="plan-amount">$1,200.00</span>
+                            <span class="plan-status">❌ Declined</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="eod-section">
+                    <h3>📅 Tomorrow's Preparation</h3>
+                    <div class="tomorrow-prep">
+                        <div class="prep-item">
+                            <span class="prep-icon">📞</span>
+                            <span class="prep-text">Call 3 patients for confirmation (Dr. Smith's schedule)</span>
+                        </div>
+                        <div class="prep-item">
+                            <span class="prep-icon">🦷</span>
+                            <span class="prep-text">Lab case ready for delivery: Emma Wilson crown #14</span>
+                        </div>
+                        <div class="prep-item">
+                            <span class="prep-icon">💰</span>
+                            <span class="prep-text">Follow up on Michael Chen treatment plan decision</span>
+                        </div>
+                        <div class="prep-item">
+                            <span class="prep-icon">📋</span>
+                            <span class="prep-text">Order supplies: impression material, prophy paste</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="eod-section">
+                    <h3>🏆 Team Performance</h3>
+                    <div class="team-performance">
+                        <div class="perf-item">
+                            <span class="staff-name">Dr. Smith:</span>
+                            <span class="perf-metric">12 procedures, 90% on-time</span>
+                        </div>
+                        <div class="perf-item">
+                            <span class="staff-name">Maria (Hygienist):</span>
+                            <span class="perf-metric">8 cleanings, 100% completion</span>
+                        </div>
+                        <div class="perf-item">
+                            <span class="staff-name">Lisa (Admin):</span>
+                            <span class="perf-metric">15 insurance claims, $2,400 collected</span>
+                        </div>
+                        <div class="perf-item">
+                            <span class="staff-name">Jessica (Assistant):</span>
+                            <span class="perf-metric">12 setups, 6 sterilization cycles</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <footer>
             <div class="footer-actions">
                 <button id="refresh-data" class="action-btn primary">🔄 Refresh Data</button>
-                <button id="print-sheet" class="action-btn secondary">🖨️ Print Day Sheet</button>
+                <button id="print-sheet" class="action-btn secondary">🖨️ Print Report</button>
                 <button id="export-sheet" class="action-btn secondary">📊 Export to Excel</button>
             </div>
         </footer>
