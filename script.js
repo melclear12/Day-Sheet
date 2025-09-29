@@ -50,6 +50,9 @@ class DaySheet {
         
         // Bind report tab switching
         this.bindReportTabs();
+        
+        // Bind print functionality
+        this.bindPrintReports();
 
         // Auto-save on input changes
         document.addEventListener('input', (e) => {
@@ -189,7 +192,7 @@ class DaySheet {
                 const reportType = btn.getAttribute('data-report');
                 switch(reportType) {
                     case 'day-view':
-                        if (dayView) dayView.style.display = 'grid';
+                        if (dayView) dayView.style.display = 'flex';
                         break;
                     case 'morning-huddle':
                         if (morningHuddle) morningHuddle.classList.remove('hidden');
@@ -200,6 +203,83 @@ class DaySheet {
                 }
             });
         });
+    }
+
+    bindPrintReports() {
+        const printBtn = document.getElementById('print-sheet');
+        if (printBtn) {
+            printBtn.addEventListener('click', () => {
+                this.printCurrentReport();
+            });
+        }
+    }
+
+    printCurrentReport() {
+        const activeTab = document.querySelector('.tab-btn.active');
+        const reportType = activeTab ? activeTab.getAttribute('data-report') : 'day-view';
+        
+        // Create print header
+        const printHeader = this.createPrintHeader(reportType);
+        
+        // Add print header to the appropriate report
+        const morningHuddle = document.querySelector('.morning-huddle-report');
+        const endOfDay = document.querySelector('.end-of-day-report');
+        
+        // Remove any existing print headers
+        document.querySelectorAll('.print-header').forEach(header => header.remove());
+        
+        if (reportType === 'morning-huddle' && morningHuddle) {
+            morningHuddle.insertAdjacentHTML('afterbegin', printHeader);
+            morningHuddle.classList.add('print-active');
+            endOfDay?.classList.remove('print-active');
+        } else if (reportType === 'end-of-day' && endOfDay) {
+            endOfDay.insertAdjacentHTML('afterbegin', printHeader);
+            endOfDay.classList.add('print-active');
+            morningHuddle?.classList.remove('print-active');
+        } else {
+            // For day-view, show a message
+            alert('Please select Morning Huddle or End of Day report to print.');
+            return;
+        }
+        
+        // Trigger print
+        setTimeout(() => {
+            window.print();
+            
+            // Clean up after print
+            setTimeout(() => {
+                document.querySelectorAll('.print-header').forEach(header => header.remove());
+                morningHuddle?.classList.remove('print-active');
+                endOfDay?.classList.remove('print-active');
+            }, 1000);
+        }, 100);
+    }
+
+    createPrintHeader(reportType) {
+        const now = new Date();
+        const dateStr = now.toLocaleDateString('en-US', { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+        const timeStr = now.toLocaleTimeString('en-US', { 
+            hour: '2-digit', 
+            minute: '2-digit' 
+        });
+        
+        const reportTitle = reportType === 'morning-huddle' ? 'MORNING HUDDLE REPORT' : 'END OF DAY REPORT';
+        
+        return `
+            <div class="print-header" style="display: none;">
+                <h1>${reportTitle}</h1>
+                <div class="practice-info">Dental Practice Day Sheet</div>
+                <div class="print-date">${dateStr} - Generated at ${timeStr}</div>
+            </div>
+            <div class="print-footer" style="display: none;">
+                <div>Confidential Practice Information - ${dateStr}</div>
+            </div>
+        `;
     }
 
     autoSave() {

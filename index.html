@@ -19,230 +19,493 @@
         </header>
         
         <main>
-            <!-- Daily Goal Section -->
-            <section class="daily-goal">
-                <h2>Daily Goals</h2>
+            <!-- Overview Cards Row -->
+            <div class="overview-row">
+                <!-- Daily Goals Card -->
+                <div class="overview-card">
+                    <div class="card-header">
+                        <h2>🎯 Daily Goals</h2>
+                        <span class="card-subtitle">Practice targets for today</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="goal-metrics">
+                            <div class="metric-item">
+                                <label>Revenue Goal</label>
+                                <div class="metric-input">
+                                    <span class="currency">$</span>
+                                    <input type="number" id="revenue-goal" value="5000">
+                                </div>
+                            </div>
+                            <div class="metric-item">
+                                <label>Patient Goal</label>
+                                <div class="metric-input">
+                                    <input type="number" id="patient-goal" value="25">
+                                    <span class="unit">patients</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Stats Card -->
+                <div class="overview-card">
+                    <div class="card-header">
+                        <h2>📊 Today's Progress</h2>
+                        <span class="card-subtitle">Current performance</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="quick-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">$4,150</span>
+                                <span class="stat-label">Revenue</span>
+                                <span class="stat-progress">83%</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">12</span>
+                                <span class="stat-label">Patients</span>
+                                <span class="stat-progress">48%</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">5</span>
+                                <span class="stat-label">Open Slots</span>
+                                <span class="stat-alert">Available</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PMS Status Card -->
+                <div class="overview-card">
+                    <div class="card-header">
+                        <h2>🔗 PMS Status</h2>
+                        <span class="card-subtitle">System connections</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="pms-status-compact">
+                            <div class="pms-item connected">
+                                <span class="pms-name">Ascend</span>
+                                <span class="pms-status">✓ Connected</span>
+                            </div>
+                            <div class="pms-item connected">
+                                <span class="pms-name">QuickBooks</span>
+                                <span class="pms-status">✓ Syncing</span>
+                            </div>
+                            <div class="pms-item disconnected">
+                                <span class="pms-name">Dentrix</span>
+                                <span class="pms-status">○ Available</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Performance Section -->
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>👥 Team Performance</h2>
+                    <span class="section-subtitle">Individual daily progress</span>
+                </div>
                 
-                <!-- Practice-Wide Goals -->
-                <div class="practice-goals">
-                    <h3>🏥 Practice Goals</h3>
-                    <div class="goal-container">
-                        <div class="goal-item">
-                            <label>Revenue Goal</label>
-                            <input type="number" id="revenue-goal" placeholder="5000" value="5000">
-                            <span class="currency">$</span>
+                <div class="team-cards-grid">
+                    <div class="team-member-card">
+                        <div class="member-header">
+                            <div class="member-avatar">DS</div>
+                            <div class="member-info">
+                                <div class="member-name">Dr. Smith</div>
+                                <div class="member-role">Lead Dentist</div>
+                            </div>
+                            <div class="goal-status on-track">On Track</div>
                         </div>
-                        <div class="goal-item">
-                            <label>Patient Goal</label>
-                            <input type="number" id="patient-goal" placeholder="25" value="25">
-                            <span class="unit">patients</span>
+                        <div class="member-progress">
+                            <div class="progress-item">
+                                <span class="progress-label">Procedures</span>
+                                <div class="progress-bar-mini">
+                                    <div class="progress-fill-mini" style="width: 67%"></div>
+                                </div>
+                                <span class="progress-text">8/12</span>
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-label">Treatment Plans</span>
+                                <div class="progress-bar-mini">
+                                    <div class="progress-fill-mini" style="width: 60%"></div>
+                                </div>
+                                <span class="progress-text">3/5</span>
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-label">Revenue</span>
+                                <div class="progress-bar-mini">
+                                    <div class="progress-fill-mini" style="width: 81%"></div>
+                                </div>
+                                <span class="progress-text">$2,850</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Individual Team Member Goals -->
-                <div class="individual-goals">
-                    <h3>👥 Individual Daily Goals</h3>
-                    
-                    <div class="team-member-goals">
-                        <div class="member-goal-card">
-                            <div class="member-header">
-                                <div class="member-avatar">DS</div>
-                                <div class="member-info">
-                                    <div class="member-name">Dr. Smith</div>
-                                    <div class="member-role">Lead Dentist</div>
-                                </div>
-                                <div class="goal-status on-track">On Track</div>
+                    <div class="team-member-card">
+                        <div class="member-header">
+                            <div class="member-avatar">LC</div>
+                            <div class="member-info">
+                                <div class="member-name">Lisa Chen</div>
+                                <div class="member-role">Practice Admin</div>
                             </div>
-                            
-                            <div class="daily-targets">
-                                <div class="target-item">
-                                    <span class="target-label">Procedures Completed</span>
-                                    <div class="target-progress">
-                                        <span class="current">8</span>
-                                        <span class="divider">/</span>
-                                        <span class="target">12</span>
-                                        <div class="progress-mini">
-                                            <div class="progress-fill-mini" style="width: 67%"></div>
-                                        </div>
-                                    </div>
+                            <div class="goal-status ahead">Ahead</div>
+                        </div>
+                        <div class="member-progress">
+                            <div class="progress-item">
+                                <span class="progress-label">Claims Processed</span>
+                                <div class="progress-bar-mini">
+                                    <div class="progress-fill-mini" style="width: 100%"></div>
                                 </div>
-                                
-                                <div class="target-item">
-                                    <span class="target-label">Treatment Plans Created</span>
-                                    <div class="target-progress">
-                                        <span class="current">3</span>
-                                        <span class="divider">/</span>
-                                        <span class="target">5</span>
-                                        <div class="progress-mini">
-                                            <div class="progress-fill-mini" style="width: 60%"></div>
-                                        </div>
-                                    </div>
+                                <span class="progress-text">18/15</span>
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-label">Check-ins</span>
+                                <div class="progress-bar-mini">
+                                    <div class="progress-fill-mini" style="width: 60%"></div>
                                 </div>
-                                
-                                <div class="target-item">
-                                    <span class="target-label">Revenue Generated</span>
-                                    <div class="target-progress">
-                                        <span class="current">$2,850</span>
-                                        <span class="divider">/</span>
-                                        <span class="target">$3,500</span>
-                                        <div class="progress-mini">
-                                            <div class="progress-fill-mini" style="width: 81%"></div>
-                                        </div>
-                                    </div>
+                                <span class="progress-text">12/20</span>
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-label">Confirmations</span>
+                                <div class="progress-bar-mini">
+                                    <div class="progress-fill-mini" style="width: 83%"></div>
                                 </div>
+                                <span class="progress-text">25/30</span>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="member-goal-card">
-                            <div class="member-header">
-                                <div class="member-avatar">LC</div>
-                                <div class="member-info">
-                                    <div class="member-name">Lisa Chen</div>
-                                    <div class="member-role">Practice Admin</div>
-                                </div>
-                                <div class="goal-status ahead">Ahead</div>
+                    <div class="team-member-card">
+                        <div class="member-header">
+                            <div class="member-avatar">ML</div>
+                            <div class="member-info">
+                                <div class="member-name">Maria Lopez</div>
+                                <div class="member-role">Dental Hygienist</div>
                             </div>
-                            
-                            <div class="daily-targets">
-                                <div class="target-item">
-                                    <span class="target-label">Insurance Claims Processed</span>
-                                    <div class="target-progress">
-                                        <span class="current">18</span>
-                                        <span class="divider">/</span>
-                                        <span class="target">15</span>
-                                        <div class="progress-mini">
-                                            <div class="progress-fill-mini" style="width: 100%"></div>
-                                        </div>
-                                    </div>
+                            <div class="goal-status excellent">Excellent</div>
+                        </div>
+                        <div class="member-progress">
+                            <div class="progress-item">
+                                <span class="progress-label">Cleanings</span>
+                                <div class="progress-bar-mini">
+                                    <div class="progress-fill-mini" style="width: 100%"></div>
                                 </div>
-                                
-                                <div class="target-item">
-                                    <span class="target-label">Patient Check-ins</span>
-                                    <div class="target-progress">
-                                        <span class="current">12</span>
-                                        <span class="divider">/</span>
-                                        <span class="target">20</span>
-                                        <div class="progress-mini">
-                                            <div class="progress-fill-mini" style="width: 60%"></div>
-                                        </div>
-                                    </div>
+                                <span class="progress-text">8/8</span>
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-label">X-rays</span>
+                                <div class="progress-bar-mini">
+                                    <div class="progress-fill-mini" style="width: 100%"></div>
                                 </div>
-                                
-                                <div class="target-item">
-                                    <span class="target-label">Appointment Confirmations</span>
-                                    <div class="target-progress">
-                                        <span class="current">25</span>
-                                        <span class="divider">/</span>
-                                        <span class="target">30</span>
-                                        <div class="progress-mini">
-                                            <div class="progress-fill-mini" style="width: 83%"></div>
-                                        </div>
-                                    </div>
+                                <span class="progress-text">15/12</span>
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-label">Education</span>
+                                <div class="progress-bar-mini">
+                                    <div class="progress-fill-mini" style="width: 100%"></div>
                                 </div>
+                                <span class="progress-text">6/6</span>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="member-goal-card">
-                            <div class="member-header">
-                                <div class="member-avatar">ML</div>
-                                <div class="member-info">
-                                    <div class="member-name">Maria Lopez</div>
-                                    <div class="member-role">Dental Hygienist</div>
-                                </div>
-                                <div class="goal-status excellent">Excellent</div>
+                    <div class="team-member-card">
+                        <div class="member-header">
+                            <div class="member-avatar">JW</div>
+                            <div class="member-info">
+                                <div class="member-name">Jessica Wong</div>
+                                <div class="member-role">Dental Assistant</div>
                             </div>
-                            
-                            <div class="daily-targets">
-                                <div class="target-item">
-                                    <span class="target-label">Cleanings Completed</span>
-                                    <div class="target-progress">
-                                        <span class="current">8</span>
-                                        <span class="divider">/</span>
-                                        <span class="target">8</span>
-                                        <div class="progress-mini">
-                                            <div class="progress-fill-mini" style="width: 100%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="target-item">
-                                    <span class="target-label">X-rays Taken</span>
-                                    <div class="target-progress">
-                                        <span class="current">15</span>
-                                        <span class="divider">/</span>
-                                        <span class="target">12</span>
-                                        <div class="progress-mini">
-                                            <div class="progress-fill-mini" style="width: 100%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="target-item">
-                                    <span class="target-label">Patient Education Sessions</span>
-                                    <div class="target-progress">
-                                        <span class="current">6</span>
-                                        <span class="divider">/</span>
-                                        <span class="target">6</span>
-                                        <div class="progress-mini">
-                                            <div class="progress-fill-mini" style="width: 100%"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="goal-status on-track">On Track</div>
                         </div>
-
-                        <div class="member-goal-card">
-                            <div class="member-header">
-                                <div class="member-avatar">JW</div>
-                                <div class="member-info">
-                                    <div class="member-name">Jessica Wong</div>
-                                    <div class="member-role">Dental Assistant</div>
+                        <div class="member-progress">
+                            <div class="progress-item">
+                                <span class="progress-label">Procedures</span>
+                                <div class="progress-bar-mini">
+                                    <div class="progress-fill-mini" style="width: 67%"></div>
                                 </div>
-                                <div class="goal-status on-track">On Track</div>
+                                <span class="progress-text">10/15</span>
                             </div>
-                            
-                            <div class="daily-targets">
-                                <div class="target-item">
-                                    <span class="target-label">Procedures Assisted</span>
-                                    <div class="target-progress">
-                                        <span class="current">10</span>
-                                        <span class="divider">/</span>
-                                        <span class="target">15</span>
-                                        <div class="progress-mini">
-                                            <div class="progress-fill-mini" style="width: 67%"></div>
-                                        </div>
-                                    </div>
+                            <div class="progress-item">
+                                <span class="progress-label">Sterilization</span>
+                                <div class="progress-bar-mini">
+                                    <div class="progress-fill-mini" style="width: 67%"></div>
                                 </div>
-                                
-                                <div class="target-item">
-                                    <span class="target-label">Sterilization Cycles</span>
-                                    <div class="target-progress">
-                                        <span class="current">4</span>
-                                        <span class="divider">/</span>
-                                        <span class="target">6</span>
-                                        <div class="progress-mini">
-                                            <div class="progress-fill-mini" style="width: 67%"></div>
-                                        </div>
-                                    </div>
+                                <span class="progress-text">4/6</span>
+                            </div>
+                            <div class="progress-item">
+                                <span class="progress-label">Turnovers</span>
+                                <div class="progress-bar-mini">
+                                    <div class="progress-fill-mini" style="width: 80%"></div>
                                 </div>
-                                
-                                <div class="target-item">
-                                    <span class="target-label">Room Turnovers</span>
-                                    <div class="target-progress">
-                                        <span class="current">12</span>
-                                        <span class="divider">/</span>
-                                        <span class="target">15</span>
-                                        <div class="progress-mini">
-                                            <div class="progress-fill-mini" style="width: 80%"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <span class="progress-text">12/15</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+
+            <!-- Accounting & KPI Section -->
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>💰 Accounting & KPIs</h2>
+                    <span class="section-subtitle">Financial performance metrics</span>
+                </div>
+                
+                <!-- KPI Cards Grid -->
+                <div class="kpi-cards-grid">
+                    <!-- Daily Performance -->
+                    <div class="kpi-card primary">
+                        <div class="kpi-header">
+                            <h3>📊 Today's Performance</h3>
+                            <span class="kpi-period">Live Data</span>
+                        </div>
+                        <div class="kpi-metrics">
+                            <div class="kpi-metric">
+                                <span class="kpi-value">$4,150</span>
+                                <span class="kpi-label">Production</span>
+                                <span class="kpi-target">Goal: $5,000</span>
+                            </div>
+                            <div class="kpi-metric">
+                                <span class="kpi-value">$3,280</span>
+                                <span class="kpi-label">Collections</span>
+                                <span class="kpi-target">Goal: $4,200</span>
+                            </div>
+                        </div>
+                        <div class="kpi-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 83%"></div>
+                            </div>
+                            <span class="progress-text">83% of daily goal achieved</span>
+                        </div>
+                    </div>
+
+                    <!-- Monthly Summary -->
+                    <div class="kpi-card secondary">
+                        <div class="kpi-header">
+                            <h3>📅 September 2025</h3>
+                            <span class="kpi-period">Month-to-Date</span>
+                        </div>
+                        <div class="kpi-metrics">
+                            <div class="kpi-metric">
+                                <span class="kpi-value">$89,420</span>
+                                <span class="kpi-label">Total Production</span>
+                                <span class="kpi-change positive">+12.5% vs last month</span>
+                            </div>
+                            <div class="kpi-metric">
+                                <span class="kpi-value">$76,180</span>
+                                <span class="kpi-label">Collections</span>
+                                <span class="kpi-change positive">+8.2% vs last month</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Outstanding Accounts -->
+                    <div class="kpi-card warning">
+                        <div class="kpi-header">
+                            <h3>⚠️ Outstanding Accounts</h3>
+                            <span class="kpi-period">Current Status</span>
+                        </div>
+                        <div class="kpi-metrics">
+                            <div class="kpi-metric">
+                                <span class="kpi-value">$12,840</span>
+                                <span class="kpi-label">A/R Total</span>
+                                <span class="kpi-target">Target: <$10,000</span>
+                            </div>
+                            <div class="kpi-metric">
+                                <span class="kpi-value">28</span>
+                                <span class="kpi-label">Outstanding Claims</span>
+                                <span class="kpi-target">Avg: 18 days</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Key Ratios -->
+                    <div class="kpi-card success">
+                        <div class="kpi-header">
+                            <h3>📈 Key Ratios</h3>
+                            <span class="kpi-period">Current Performance</span>
+                        </div>
+                        <div class="kpi-metrics">
+                            <div class="kpi-metric">
+                                <span class="kpi-value">85.2%</span>
+                                <span class="kpi-label">Collection Rate</span>
+                                <span class="kpi-change positive">Industry: 82%</span>
+                            </div>
+                            <div class="kpi-metric">
+                                <span class="kpi-value">$420</span>
+                                <span class="kpi-label">Avg Case Value</span>
+                                <span class="kpi-change positive">+$35 vs last month</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Accounting Grid -->
+                <div class="accounting-grid">
+                    <!-- Revenue Breakdown -->
+                    <div class="accounting-card">
+                        <div class="accounting-header">
+                            <h4>💵 Revenue Breakdown</h4>
+                            <span class="period-selector">
+                                <button class="period-btn active">Today</button>
+                                <button class="period-btn">MTD</button>
+                                <button class="period-btn">YTD</button>
+                            </span>
+                        </div>
+                        <div class="revenue-items">
+                            <div class="revenue-item">
+                                <span class="revenue-source">General Dentistry</span>
+                                <span class="revenue-amount">$2,840</span>
+                                <span class="revenue-percentage">68%</span>
+                            </div>
+                            <div class="revenue-item">
+                                <span class="revenue-source">Cosmetic Procedures</span>
+                                <span class="revenue-amount">$920</span>
+                                <span class="revenue-percentage">22%</span>
+                            </div>
+                            <div class="revenue-item">
+                                <span class="revenue-source">Orthodontics</span>
+                                <span class="revenue-amount">$280</span>
+                                <span class="revenue-percentage">7%</span>
+                            </div>
+                            <div class="revenue-item">
+                                <span class="revenue-source">Emergency/Other</span>
+                                <span class="revenue-amount">$110</span>
+                                <span class="revenue-percentage">3%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Methods -->
+                    <div class="accounting-card">
+                        <div class="accounting-header">
+                            <h4>💳 Payment Methods</h4>
+                            <span class="update-time">Last updated: 2:45 PM</span>
+                        </div>
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <div class="payment-icon">💳</div>
+                                <div class="payment-details">
+                                    <span class="payment-type">Credit/Debit Cards</span>
+                                    <span class="payment-amount">$2,180.00</span>
+                                </div>
+                                <span class="payment-percentage">53%</span>
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-icon">💰</div>
+                                <div class="payment-details">
+                                    <span class="payment-type">Cash/Check</span>
+                                    <span class="payment-amount">$820.00</span>
+                                </div>
+                                <span class="payment-percentage">20%</span>
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-icon">🏥</div>
+                                <div class="payment-details">
+                                    <span class="payment-type">Insurance Direct</span>
+                                    <span class="payment-amount">$980.00</span>
+                                </div>
+                                <span class="payment-percentage">24%</span>
+                            </div>
+                            <div class="payment-method">
+                                <div class="payment-icon">📋</div>
+                                <div class="payment-details">
+                                    <span class="payment-type">CareCredit/Financing</span>
+                                    <span class="payment-amount">$120.00</span>
+                                </div>
+                                <span class="payment-percentage">3%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Insurance Claims -->
+                    <div class="accounting-card">
+                        <div class="accounting-header">
+                            <h4>🏥 Insurance Claims Status</h4>
+                            <button class="refresh-btn">🔄 Refresh</button>
+                        </div>
+                        <div class="claims-status">
+                            <div class="claims-summary">
+                                <div class="claims-stat">
+                                    <span class="stat-number">15</span>
+                                    <span class="stat-label">Submitted Today</span>
+                                </div>
+                                <div class="claims-stat">
+                                    <span class="stat-number">28</span>
+                                    <span class="stat-label">Pending</span>
+                                </div>
+                                <div class="claims-stat">
+                                    <span class="stat-number">$8,420</span>
+                                    <span class="stat-label">Total Pending</span>
+                                </div>
+                            </div>
+                            <div class="claims-by-carrier">
+                                <div class="carrier-item">
+                                    <span class="carrier-name">Delta Dental</span>
+                                    <span class="carrier-count">8 claims</span>
+                                    <span class="carrier-amount">$3,200</span>
+                                </div>
+                                <div class="carrier-item">
+                                    <span class="carrier-name">MetLife</span>
+                                    <span class="carrier-count">6 claims</span>
+                                    <span class="carrier-amount">$2,840</span>
+                                </div>
+                                <div class="carrier-item">
+                                    <span class="carrier-name">Cigna</span>
+                                    <span class="carrier-count">4 claims</span>
+                                    <span class="carrier-amount">$1,680</span>
+                                </div>
+                                <div class="carrier-item">
+                                    <span class="carrier-name">Other Carriers</span>
+                                    <span class="carrier-count">10 claims</span>
+                                    <span class="carrier-amount">$700</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Production Goals -->
+                    <div class="accounting-card">
+                        <div class="accounting-header">
+                            <h4>🎯 Production Goals</h4>
+                            <span class="goal-period">September 2025</span>
+                        </div>
+                        <div class="production-goals">
+                            <div class="goal-item">
+                                <div class="goal-info">
+                                    <span class="goal-label">Monthly Target</span>
+                                    <span class="goal-progress">$89,420 / $95,000</span>
+                                </div>
+                                <div class="goal-bar">
+                                    <div class="goal-fill" style="width: 94%"></div>
+                                </div>
+                                <span class="goal-percentage">94%</span>
+                            </div>
+                            <div class="goal-item">
+                                <div class="goal-info">
+                                    <span class="goal-label">Quarterly Target</span>
+                                    <span class="goal-progress">$245,680 / $285,000</span>
+                                </div>
+                                <div class="goal-bar">
+                                    <div class="goal-fill" style="width: 86%"></div>
+                                </div>
+                                <span class="goal-percentage">86%</span>
+                            </div>
+                            <div class="goal-item">
+                                <div class="goal-info">
+                                    <span class="goal-label">Annual Target</span>
+                                    <span class="goal-progress">$812,450 / $1,140,000</span>
+                                </div>
+                                <div class="goal-bar">
+                                    <div class="goal-fill" style="width: 71%"></div>
+                                </div>
+                                <span class="goal-percentage">71%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- PMS Integration Status -->
             <section class="pms-integration">
