@@ -1,391 +1,200 @@
-// Day Sheet Application JavaScript
-
-class DaySheet {
+class DaySheetApp {
     constructor() {
-        this.initializeApp();
-        this.bindEvents();
-        this.loadSavedData();
+        this.init();
     }
 
-    initializeApp() {
-        // Set current date
-        const currentDate = new Date();
-        const options = { 
-            weekday: 'long', 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
-        };
-        document.getElementById('current-date').textContent = 
-            currentDate.toLocaleDateString('en-US', options);
-    }
-
-    bindEvents() {
-        // Refresh data button
-        const refreshBtn = document.getElementById('refresh-data');
-        if (refreshBtn) {
-            refreshBtn.addEventListener('click', () => {
-                this.refreshData();
-            });
-        }
-
-        // Print sheet button
-        const printBtn = document.getElementById('print-sheet');
-        if (printBtn) {
-            printBtn.addEventListener('click', () => {
-                this.printSheet();
-            });
-        }
-
-        // Export sheet button  
-        const exportBtn = document.getElementById('export-sheet');
-        if (exportBtn) {
-            exportBtn.addEventListener('click', () => {
-                this.exportSheet();
-            });
-        }
-
-        // Bind dropdown toggles for smart scheduling
-        this.bindSchedulingDropdowns();
+    init() {
+        this.setupDate();
+        this.bindNavigation();
+        this.loadData();
         
-        // Bind report tab switching
-        this.bindReportTabs();
-        
-        // Bind print functionality
-        this.bindPrintReports();
-
         // Auto-save on input changes
         document.addEventListener('input', (e) => {
-            if (e.target.id === 'revenue-goal' || 
-                e.target.id === 'patient-goal') {
-                this.updateGoals();
-            }
-        });
-    }
-
-    addPriorityItem() {
-        const priorityList = document.querySelector('.priority-list');
-        const newItem = document.createElement('div');
-        newItem.className = 'priority-item';
-        newItem.innerHTML = `
-            <input type="text" placeholder="New priority" class="priority-input">
-            <button class="remove-btn">×</button>
-        `;
-        
-        priorityList.appendChild(newItem);
-        
-        // Bind remove button for new item
-        const removeBtn = newItem.querySelector('.remove-btn');
-        removeBtn.addEventListener('click', () => {
-            newItem.remove();
-            this.autoSave();
-        });
-
-        // Focus on new input
-        newItem.querySelector('.priority-input').focus();
-    }
-
-    addTimeSlot() {
-        const timeSlots = document.querySelector('.time-slots');
-        const newSlot = document.createElement('div');
-        newSlot.className = 'time-slot';
-        
-        // Generate a time (rough estimate based on existing slots)
-        const existingSlots = timeSlots.querySelectorAll('.time-slot').length;
-        const baseHour = 6 + (existingSlots * 2);
-        const timeString = this.formatTime(baseHour);
-        
-        newSlot.innerHTML = `
-            <span class="time">${timeString}</span>
-            <input type="text" placeholder="Add activity" class="schedule-input">
-        `;
-        
-        timeSlots.appendChild(newSlot);
-        
-        // Focus on new input
-        newSlot.querySelector('.schedule-input').focus();
-    }
-
-    formatTime(hour) {
-        const adjustedHour = hour > 24 ? hour - 24 : hour;
-        const displayHour = adjustedHour > 12 ? adjustedHour - 12 : (adjustedHour === 0 ? 12 : adjustedHour);
-        const ampm = adjustedHour >= 12 ? 'PM' : 'AM';
-        return `${displayHour}:00 ${ampm}`;
-    }
-
-    bindRemoveButtons() {
-        document.querySelectorAll('.remove-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.target.closest('.priority-item').remove();
+            if (e.target.id === 'revenue-goal' || e.target.id === 'patient-goal') {
                 this.autoSave();
-            });
-        });
-    }
-
-    refreshData() {
-        // Simulate data refresh
-        console.log('Refreshing practice data...');
-        this.updateMetrics();
-    }
-
-    printSheet() {
-        window.print();
-    }
-
-    exportSheet() {
-        // Simulate export functionality
-        console.log('Exporting day sheet to Excel...');
-        alert('Day sheet export feature coming soon!');
-    }
-
-    bindSchedulingDropdowns() {
-        const dropdowns = document.querySelectorAll('.schedule-dropdown');
-        dropdowns.forEach(dropdown => {
-            const btn = dropdown.querySelector('.schedule-btn');
-            const times = dropdown.querySelector('.recommended-times');
-            
-            if (btn && times) {
-                btn.addEventListener('click', () => {
-                    times.classList.toggle('show');
-                });
             }
         });
     }
 
-    updateGoals() {
-        // Update goal progress when inputs change
-        const revenueGoal = document.getElementById('revenue-goal').value;
-        const patientGoal = document.getElementById('patient-goal').value;
-        
-        console.log(`Goals updated: Revenue $${revenueGoal}, Patients ${patientGoal}`);
-    }
-
-    updateMetrics() {
-        // Update various metrics and progress bars
-        const progressFill = document.getElementById('goal-progress');
-        if (progressFill) {
-            // Simulate progress update
-            const currentProgress = Math.floor(Math.random() * 100);
-            progressFill.style.width = currentProgress + '%';
+    setupDate() {
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const dateStr = now.toLocaleDateString('en-US', options);
+        const dateElement = document.getElementById('current-date');
+        if (dateElement) {
+            dateElement.textContent = dateStr;
         }
     }
 
-    bindReportTabs() {
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const dayView = document.querySelector('main');
-        const morningHuddle = document.querySelector('.morning-huddle-report');
-        const endOfDay = document.querySelector('.end-of-day-report');
-
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all tabs
-                tabBtns.forEach(tab => tab.classList.remove('active'));
-                // Add active class to clicked tab
-                btn.classList.add('active');
-
-                // Hide all report sections
-                if (dayView) dayView.style.display = 'none';
-                if (morningHuddle) morningHuddle.classList.add('hidden');
-                if (endOfDay) endOfDay.classList.add('hidden');
-
-                // Show selected report
-                const reportType = btn.getAttribute('data-report');
-                switch(reportType) {
-                    case 'day-view':
-                        if (dayView) dayView.style.display = 'flex';
-                        break;
-                    case 'morning-huddle':
-                        if (morningHuddle) morningHuddle.classList.remove('hidden');
-                        break;
-                    case 'end-of-day':
-                        if (endOfDay) endOfDay.classList.remove('hidden');
-                        break;
+    bindNavigation() {
+        // Main menu items
+        const menuItems = document.querySelectorAll('.menu-item');
+        menuItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                const viewName = item.getAttribute('data-view');
+                
+                // Handle submenu toggle
+                if (item.classList.contains('has-submenu')) {
+                    item.classList.toggle('active');
+                    return;
+                }
+                
+                if (viewName) {
+                    this.switchView(viewName);
+                    
+                    // Update active states
+                    menuItems.forEach(mi => mi.classList.remove('active'));
+                    item.classList.add('active');
                 }
             });
         });
-    }
 
-    bindPrintReports() {
-        const printBtn = document.getElementById('print-sheet');
-        if (printBtn) {
-            printBtn.addEventListener('click', () => {
-                this.printCurrentReport();
+        // Submenu items
+        const submenuItems = document.querySelectorAll('.submenu-item');
+        submenuItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                const viewName = item.getAttribute('data-view');
+                if (viewName) {
+                    this.switchView(viewName);
+                }
             });
+        });
+
+        // Quick action buttons
+        const quickActionBtns = document.querySelectorAll('.quick-action-btn');
+        quickActionBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetView = btn.getAttribute('data-navigate');
+                if (targetView) {
+                    this.navigateTo(targetView);
+                }
+            });
+        });
+
+        // View more buttons
+        const viewMoreBtns = document.querySelectorAll('.view-more-btn');
+        viewMoreBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetView = btn.getAttribute('data-navigate');
+                if (targetView) {
+                    this.navigateTo(targetView);
+                }
+            });
+        });
+
+        // Print buttons
+        const printHuddle = document.getElementById('print-huddle');
+        if (printHuddle) {
+            printHuddle.addEventListener('click', () => this.printReport('morning-huddle'));
+        }
+
+        const printEod = document.getElementById('print-eod');
+        if (printEod) {
+            printEod.addEventListener('click', () => this.printReport('end-of-day'));
+        }
+
+        const printSheet = document.getElementById('print-sheet');
+        if (printSheet) {
+            printSheet.addEventListener('click', () => this.printCurrentView());
+        }
+
+        // Refresh button
+        const refreshBtn = document.getElementById('refresh-data');
+        if (refreshBtn) {
+            refreshBtn.addEventListener('click', () => this.refreshData());
         }
     }
 
-    printCurrentReport() {
-        const activeTab = document.querySelector('.tab-btn.active');
-        const reportType = activeTab ? activeTab.getAttribute('data-report') : 'day-view';
-        
-        // Create print header
-        const printHeader = this.createPrintHeader(reportType);
-        
-        // Add print header to the appropriate report
-        const morningHuddle = document.querySelector('.morning-huddle-report');
-        const endOfDay = document.querySelector('.end-of-day-report');
-        
-        // Remove any existing print headers
-        document.querySelectorAll('.print-header').forEach(header => header.remove());
-        
-        if (reportType === 'morning-huddle' && morningHuddle) {
-            morningHuddle.insertAdjacentHTML('afterbegin', printHeader);
-            morningHuddle.classList.add('print-active');
-            endOfDay?.classList.remove('print-active');
-        } else if (reportType === 'end-of-day' && endOfDay) {
-            endOfDay.insertAdjacentHTML('afterbegin', printHeader);
-            endOfDay.classList.add('print-active');
-            morningHuddle?.classList.remove('print-active');
-        } else {
-            // For day-view, show a message
-            alert('Please select Morning Huddle or End of Day report to print.');
-            return;
+    switchView(viewName) {
+        // Hide all views
+        const allViews = document.querySelectorAll('.view-container');
+        allViews.forEach(view => view.classList.remove('active'));
+
+        // Show selected view
+        const targetView = document.getElementById(`${viewName}-view`);
+        if (targetView) {
+            targetView.classList.add('active');
         }
-        
-        // Trigger print
+    }
+
+    navigateTo(viewName) {
+        // Update menu active states
+        const menuItems = document.querySelectorAll('.menu-item');
+        menuItems.forEach(item => {
+            item.classList.remove('active');
+            if (item.getAttribute('data-view') === viewName) {
+                item.classList.add('active');
+            }
+        });
+
+        // Switch to the view
+        this.switchView(viewName);
+    }
+
+    printReport(reportType) {
+        window.print();
+    }
+
+    printCurrentView() {
+        window.print();
+    }
+
+    refreshData() {
+        // Show loading state
+        const refreshBtn = document.getElementById('refresh-data');
+        if (refreshBtn) {
+            refreshBtn.textContent = '🔄 Refreshing...';
+            refreshBtn.disabled = true;
+        }
+
+        // Simulate data refresh
         setTimeout(() => {
-            window.print();
-            
-            // Clean up after print
-            setTimeout(() => {
-                document.querySelectorAll('.print-header').forEach(header => header.remove());
-                morningHuddle?.classList.remove('print-active');
-                endOfDay?.classList.remove('print-active');
-            }, 1000);
-        }, 100);
+            this.loadData();
+            if (refreshBtn) {
+                refreshBtn.textContent = '🔄 Refresh';
+                refreshBtn.disabled = false;
+            }
+        }, 1000);
     }
 
-    createPrintHeader(reportType) {
-        const now = new Date();
-        const dateStr = now.toLocaleDateString('en-US', { 
-            weekday: 'long', 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
-        });
-        const timeStr = now.toLocaleTimeString('en-US', { 
-            hour: '2-digit', 
-            minute: '2-digit' 
-        });
-        
-        const reportTitle = reportType === 'morning-huddle' ? 'MORNING HUDDLE REPORT' : 'END OF DAY REPORT';
-        
-        return `
-            <div class="print-header" style="display: none;">
-                <h1>${reportTitle}</h1>
-                <div class="practice-info">Dental Practice Day Sheet</div>
-                <div class="print-date">${dateStr} - Generated at ${timeStr}</div>
-            </div>
-            <div class="print-footer" style="display: none;">
-                <div>Confidential Practice Information - ${dateStr}</div>
-            </div>
-        `;
+    loadData() {
+        // Load saved goals from localStorage
+        const savedRevenueGoal = localStorage.getItem('revenueGoal');
+        const savedPatientGoal = localStorage.getItem('patientGoal');
+
+        if (savedRevenueGoal) {
+            const revenueInput = document.getElementById('revenue-goal');
+            if (revenueInput) {
+                revenueInput.value = savedRevenueGoal;
+            }
+        }
+
+        if (savedPatientGoal) {
+            const patientInput = document.getElementById('patient-goal');
+            if (patientInput) {
+                patientInput.value = savedPatientGoal;
+            }
+        }
     }
 
     autoSave() {
         // Debounce auto-save to avoid excessive saves
         clearTimeout(this.autoSaveTimeout);
         this.autoSaveTimeout = setTimeout(() => {
-            const data = this.collectData();
-            localStorage.setItem('daySheet_auto', JSON.stringify(data));
-        }, 1000);
+            const revenueGoal = document.getElementById('revenue-goal')?.value;
+            const patientGoal = document.getElementById('patient-goal')?.value;
+
+            if (revenueGoal) {
+                localStorage.setItem('revenueGoal', revenueGoal);
+            }
+            if (patientGoal) {
+                localStorage.setItem('patientGoal', patientGoal);
+            }
+        }, 500);
     }
-
-    collectData() {
-        const priorities = [];
-        document.querySelectorAll('.priority-input').forEach(input => {
-            if (input.value.trim()) {
-                priorities.push(input.value.trim());
-            }
-        });
-
-        const schedule = [];
-        document.querySelectorAll('.time-slot').forEach(slot => {
-            const time = slot.querySelector('.time').textContent;
-            const activity = slot.querySelector('.schedule-input').value.trim();
-            if (activity) {
-                schedule.push({ time, activity });
-            }
-        });
-
-        const notes = document.getElementById('daily-notes').value.trim();
-
-        return {
-            date: new Date().toISOString().split('T')[0],
-            priorities,
-            schedule,
-            notes,
-            savedAt: new Date().toISOString()
-        };
-    }
-
-    loadSavedData() {
-        // Try to load auto-saved data first, then manual save
-        let saved = localStorage.getItem('daySheet_auto');
-        if (!saved) {
-            saved = localStorage.getItem('daySheet');
-        }
-
-        if (saved) {
-            try {
-                const data = JSON.parse(saved);
-                const today = new Date().toISOString().split('T')[0];
-                
-                // Only load if it's from today
-                if (data.date === today) {
-                    this.populateData(data);
-                }
-            } catch (e) {
-                console.warn('Could not load saved data:', e);
-            }
-        }
-    }
-
-    populateData(data) {
-        // Load priorities
-        const priorityInputs = document.querySelectorAll('.priority-input');
-        data.priorities.forEach((priority, index) => {
-            if (priorityInputs[index]) {
-                priorityInputs[index].value = priority;
-            } else {
-                // Need to create new priority item
-                this.addPriorityItem();
-                const newInput = document.querySelector('.priority-list .priority-item:last-child .priority-input');
-                newInput.value = priority;
-            }
-        });
-
-        // Load schedule
-        data.schedule.forEach(item => {
-            // Find existing time slot or create new one
-            const existingSlots = document.querySelectorAll('.time-slot');
-            let found = false;
-            
-            existingSlots.forEach(slot => {
-                if (slot.querySelector('.time').textContent === item.time) {
-                    slot.querySelector('.schedule-input').value = item.activity;
-                    found = true;
-                }
-            });
-            
-            if (!found) {
-                this.addTimeSlot();
-                const newSlot = document.querySelector('.time-slots .time-slot:last-child');
-                newSlot.querySelector('.time').textContent = item.time;
-                newSlot.querySelector('.schedule-input').value = item.activity;
-            }
-        });
-
-        // Load notes
-        document.getElementById('daily-notes').value = data.notes || '';
-    }
-
-    // Remove old methods that are no longer needed
-    // addPriorityItem, addTimeSlot, clearSheet, etc. are not needed
-    // for the new medical practice day sheet structure
 }
 
-// Initialize the app when DOM is loaded
+// Initialize app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new DaySheet();
+    window.daySheetApp = new DaySheetApp();
 });
